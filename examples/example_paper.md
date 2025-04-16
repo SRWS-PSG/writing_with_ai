@@ -1,7 +1,6 @@
 ---
 title: "2型糖尿病患者における運動療法の血糖コントロールへの効果：系統的レビュー"
 author: "山田 太郎"
-date: "2025年4月16日"
 bibliography: [example_references.bib]
 csl: ../templates/vancouver-brackets.csl
 ---
