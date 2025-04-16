@@ -3,7 +3,7 @@ title: "論文タイトル"
 author: "著者名"
 date: "2025年4月16日"
 bibliography: [references.bib]
-csl: ieee.csl
+csl: vancouver-brackets.csl
 ---
 
 # 要旨

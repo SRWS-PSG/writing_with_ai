@@ -115,7 +115,7 @@ pandoc paper.md --bibliography=references.bib -o paper.pdf
 - `-o paper.docx` / `-o paper.pdf`: 出力ファイル名を指定します。
 - **PDF生成の注意:** 高品質なPDFを生成するには、通常LaTeX（TeX LiveやMiKTeXなど）の環境が別途必要になります。
 
-Pandocは、Markdownファイル内の `[@引用キー]` を解釈し、`.bib` ファイルの情報に基づいて文中の引用表記と巻末の参考文献リストを自動的に生成します。参考文献のスタイルはCSL (Citation Style Language) ファイルを使ってカスタマイズすることも可能です。
+Pandocは、Markdownファイル内の `[@引用キー]` を解釈し、`.bib` ファイルの情報に基づいて文中の引用表記と巻末の参考文献リストを自動的に生成します。参考文献のスタイルはCSL (Citation Style Language) ファイルを使ってカスタマイズすることも可能です。このリポジトリでは臨床医学論文でよく使用されるVancouverスタイル（角括弧）を採用しています。
 
 ## まとめ
 
