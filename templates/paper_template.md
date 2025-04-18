@@ -2,9 +2,14 @@
 title: "論文タイトル"
 author: "著者名"
 date: "2025年4月16日"
-bibliography: [references.bib]
-csl: vancouver-brackets.csl
+bibliography: references.bib  # 角括弧を使わない推奨形式
+csl: templates/vancouver-brackets.csl  # パスを明示的に指定
 ---
+
+<!-- 
+注意: Pandoc 3.x以降で変換する場合は、必ず --citeproc オプションを指定してください
+例: pandoc paper.md --citeproc -o paper.docx
+-->
 
 # 要旨
 

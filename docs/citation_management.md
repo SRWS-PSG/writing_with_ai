@@ -100,22 +100,70 @@ bibliography: [references.bib] # あなたの.bibファイル名に置き換え�
 
 Markdownファイルと `.bib` ファイルが準備できたら、Pandocコマンドを使って最終的なドキュメント（例: DOCXやPDF）を生成します。ターミナル（VS Code内蔵ターミナルでも可）で以下のコマンドを実行します。
 
+### Pandoc 3.x以降での引用処理（重要）
+
+**重要:** Pandoc 3.x以降では、引用処理を行うために`--citeproc`オプションが必須となりました。これがないと`CiteprocParseError`エラーが発生します。
+
 **Word (DOCX) ファイルを生成する場合:**
 ```bash
-pandoc paper.md --bibliography=references.bib -o paper.docx
+pandoc paper.md --citeproc --bibliography=references.bib -o paper.docx
 ```
 
 **PDFファイルを生成する場合:**
 ```bash
-pandoc paper.md --bibliography=references.bib -o paper.pdf
+pandoc paper.md --citeproc --bibliography=references.bib -o paper.pdf
 ```
 
 - `paper.md`: あなたのMarkdownファイル名
-- `--bibliography=references.bib`: 使用するBibTeXファイルを指定します。（YAMLで指定していても、コマンドラインで明示するのが確実です）
-- `-o paper.docx` / `-o paper.pdf`: 出力ファイル名を指定します。
-- **PDF生成の注意:** 高品質なPDFを生成するには、通常LaTeX（TeX LiveやMiKTeXなど）の環境が別途必要になります。
+- `--citeproc`: 引用処理エンジンを有効にします（Pandoc 3.x以降で必須）
+- `--bibliography=references.bib`: 使用するBibTeXファイルを指定します（YAMLで指定していても、コマンドラインで明示するのが確実です）
+- `-o paper.docx` / `-o paper.pdf`: 出力ファイル名を指定します
+- **PDF生成の注意:** 高品質なPDFを生成するには、通常LaTeX（TeX LiveやMiKTeXなど）の環境が別途必要になります
+
+### 引用スタイル（CSL）の指定
+
+引用スタイルを指定するには`--csl`オプションを使用します：
+
+```bash
+pandoc paper.md --citeproc --bibliography=references.bib --csl=vancouver-brackets.csl -o paper.docx
+```
+
+- `--csl=vancouver-brackets.csl`: 使用する引用スタイルファイル（CSL）を指定します
 
 Pandocは、Markdownファイル内の `[@引用キー]` を解釈し、`.bib` ファイルの情報に基づいて文中の引用表記と巻末の参考文献リストを自動的に生成します。参考文献のスタイルはCSL (Citation Style Language) ファイルを使ってカスタマイズすることも可能です。このリポジトリでは臨床医学論文でよく使用されるVancouverスタイル（角括弧）を採用しています。
+
+## トラブルシューティング
+
+### よくあるエラーと解決策
+
+#### 1. `CiteprocParseError: No citation element present`
+
+このエラーは主に以下の原因で発生します：
+
+1. **Pandoc 3.x使用時に`--citeproc`オプションが欠けている**
+   - 解決策: コマンドに`--citeproc`を追加します
+
+2. **CSLファイルに問題がある**
+   - 解決策: 正しい構造の検証済みCSLファイルを使用します
+   - 公式リポジトリから信頼できるCSLファイルを入手: [Citation Style Language](https://github.com/citation-style-language/styles)
+
+3. **YAMLフロントマターのパス指定に問題がある**
+   - 解決策: 絶対パスまたは正確な相対パスを使用し、角括弧は不要です
+   ```yaml
+   bibliography: path/to/references.bib  # 角括弧なし
+   csl: path/to/citation-style.csl
+   ```
+
+4. **オプション指定の順序や形式に誤りがある**
+   - 解決策: `--csl=style.csl`と`--bibliography=refs.bib`は別々のオプションとして指定します
+
+#### 2. 引用が正しく処理されない
+
+1. **`.bib`ファイルのフォーマットが正しくない**
+   - 解決策: BibTeXの構文を確認し、必要なフィールドがすべて含まれているか確認します
+
+2. **引用キーが間違っている**
+   - 解決策: `.bib`ファイル内の正確な引用キーを使用しているか確認します
 
 ## まとめ
 
