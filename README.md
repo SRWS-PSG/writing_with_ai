@@ -10,36 +10,12 @@
 4. [参考資料](resources/)
 5. [トラブルシューティング](#トラブルシューティング)
 
-## Pandoc 3.x対応について（重要）
-
-**注意**: Pandoc 3.x以降では引用処理の方法が変更されています。引用処理を行う場合は必ず以下の点に注意してください：
-
-1. `--citeproc`オプションを必ず指定する
-   ```bash
-   pandoc paper.md --citeproc -o paper.docx
-   ```
-
-2. YAMLフロントマターでの参考文献指定は角括弧なしの形式を推奨
-   ```yaml
-   ---
-   bibliography: references.bib  # 角括弧なし
-   ---
-   ```
-
-3. CSLファイル（引用スタイル）は検証済みのものを使用する
-   ```yaml
-   csl: templates/vancouver-brackets.csl
-   ```
-
-詳細については[BibTeXとPandocを使った引用管理ガイド](docs/citation_management.md)を参照してください。
-
 ## 使い方
 
 1. このリポジトリをフォークして自分のGitHubアカウントにコピーします
 2. ローカルにクローンして作業を開始します
 3. 各ガイドに従ってツールをセットアップします
 4. テンプレートを使って論文執筆を始めましょう
-5. Pandocでの変換時は`--citeproc`オプションを忘れずに指定してください
 
 ## トラブルシューティング
 
