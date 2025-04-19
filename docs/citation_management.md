@@ -1,6 +1,6 @@
 # VS Codeで論文執筆: BibTeXとPandocを使った引用管理ガイド
 
-VS CodeとMarkdownを使って論文を執筆する際に、BibTeXファイル（`.bib`）で参考文献を管理し、Pandocを使って引用を含む最終的なドキュメント（PDFやWordなど）を生成する方法について説明します。特に初心者の方がつまずきやすいポイント（引用のオートコンプリートが機能しない問題）に焦点を当てて解説します。
+VS CodeとMarkdownを使って論文を執筆する際に、BibTeXファイル（`.bib`）で参考文献を管理し、Pandocを使って引用を含む最終的なドキュメント（特にWord形式）を生成する方法について説明します。特に初心者の方がつまずきやすいポイント（引用が出力されない問題）に焦点を当てて解説します。
 
 ## 目次
 
@@ -9,7 +9,10 @@ VS CodeとMarkdownを使って論文を執筆する際に、BibTeXファイル�
 3. [Markdownファイルでの設定と引用方法](#markdownファイルでの設定と引用方法)
 4. [VS Code拡張機能「Pandoc Citer」による自動補完](#vs-code拡張機能pandoc-citerによる自動補完)
 5. [Pandocによるドキュメント生成](#pandocによるドキュメント生成)
-6. [まとめ](#まとめ)
+6. [フォルダ構造チェックリスト](#フォルダ構造チェックリスト)
+7. [トラブルシューティング Q&A](#トラブルシューティング-qa)
+8. [VS Code 連携 Tips](#vs-code-連携-tips)
+9. [まとめ](#まとめ)
 
 ## 必要なツール
 
@@ -98,41 +101,78 @@ bibliography: [references.bib] # あなたの.bibファイル名に置き換え�
 
 ## Pandocによるドキュメント生成
 
-Markdownファイルと `.bib` ファイルが準備できたら、Pandocコマンドを使って最終的なドキュメント（例: DOCXやPDF）を生成します。ターミナル（VS Code内蔵ターミナルでも可）で以下のコマンドを実行します。
+Markdownファイルと `.bib` ファイルが準備できたら、Pandocコマンドを使って最終的なドキュメント（Word形式）を生成します。ターミナル（VS Code内蔵ターミナルでも可）で以下のコマンドを実行します。
 
-### Pandoc 3.x以降での引用処理（重要）
+### 目的別に最低限必要なPandocオプション
 
-**重要:** Pandoc 3.x以降では、引用処理を行うために`--citeproc`オプションが必須となりました。これがないと`CiteprocParseError`エラーが発生します。
+**重要:** Pandoc 3系では、`--citeproc` オプションを付け忘れると引用が正しく処理されません。特にWord (docx) 出力では、このオプションがないと文献が挿入されない現象が発生します。
 
-**Word (DOCX) ファイルを生成する場合:**
-```bash
-pandoc paper.md --citeproc --bibliography=references.bib -o paper.docx
-```
-
-**PDFファイルを生成する場合:**
-```bash
-pandoc paper.md --citeproc --bibliography=references.bib -o paper.pdf
-```
+| 出力形式 | 最低限必要なコマンド例 | ワンポイント |
+|---------|----------------------|-------------|
+| **Word (docx)** | `pandoc paper.md --citeproc --bibliography=references.bib --csl=vancouver-brackets.csl -o paper.docx` | `--citeproc` を付けないと Pandoc 3 系では _docx の⾃前 citation 機構_ が優先され、文献が挿入されません |
 
 - `paper.md`: あなたのMarkdownファイル名
-- `--citeproc`: 引用処理エンジンを有効にします（Pandoc 3.x以降で必須）
-- `--bibliography=references.bib`: 使用するBibTeXファイルを指定します（YAMLで指定していても、コマンドラインで明示するのが確実です）
-- `-o paper.docx` / `-o paper.pdf`: 出力ファイル名を指定します
-- **PDF生成の注意:** 高品質なPDFを生成するには、通常LaTeX（TeX LiveやMiKTeXなど）の環境が別途必要になります
+- `--citeproc`: **必須オプション**。引用処理エンジンを有効にします。Pandoc 3.x以降では、これがないと引用が正しく処理されません。
+- `--bibliography=references.bib`: 使用するBibTeXファイルを指定します。（YAMLで指定していても、コマンドラインで明示するのが確実です）
+- `--csl=vancouver-brackets.csl`: 引用スタイルを指定します。このリポジトリでは臨床医学論文でよく使用されるVancouverスタイル（角括弧）を採用しています。
+- `-o paper.docx`: 出力ファイル名を指定します。
 
-### 引用スタイル（CSL）の指定
+### YAMLメタデータとCLIオプションの関係
 
-引用スタイルを指定するには`--csl`オプションを使用します：
+Markdownファイルの先頭にYAMLメタデータで設定した情報と、コマンドラインオプションの関係は以下のようになります：
 
-```bash
-pandoc paper.md --citeproc --bibliography=references.bib --csl=vancouver-brackets.csl -o paper.docx
+```yaml
+---
+bibliography: references.bib
+csl: vancouver-brackets.csl   # Vancouver 系
+...
+---
 ```
 
-- `--csl=vancouver-brackets.csl`: 使用する引用スタイルファイル（CSL）を指定します
+**重要ポイント:**
+- YAMLに書いても `--citeproc` は必須です
+- コマンドラインオプションはYAMLの設定より優先されます
+- 両方に指定がある場合はコマンドラインの指定が使用されます
+
+### Windows/PowerShellでの実行例
+
+PowerShellでは、長いコマンドを複数行に分ける場合、バックスラッシュ (`\`) ではなく、バッククォート (`` ` ``) を使用します：
+
+```powershell
+pandoc paper.md --citeproc `
+  --bibliography=references.bib `
+  --csl=vancouver-brackets.csl `
+  -o paper.docx
+```
 
 Pandocは、Markdownファイル内の `[@引用キー]` を解釈し、`.bib` ファイルの情報に基づいて文中の引用表記と巻末の参考文献リストを自動的に生成します。参考文献のスタイルはCSL (Citation Style Language) ファイルを使ってカスタマイズすることも可能です。このリポジトリでは臨床医学論文でよく使用されるVancouverスタイル（角括弧）を採用しています。
 
-## トラブルシューティング
+## フォルダ構造チェックリスト
+
+引用処理がうまく機能しない場合は、以下のフォルダ構造を確認してください：
+
+- `paper.md`、`references.bib`、`*.csl` ファイルが同じフォルダにあるか
+- `pandoc.exe` はPATHが通っているか（フォルダに直接置く必要はありません）
+
+PowerShellで現在のフォルダ内のファイルを確認するコマンド：
+
+```powershell
+Get-ChildItem -Path . -File
+```
+
+再帰的に全てのファイルを確認する場合：
+
+```powershell
+Get-ChildItem -Path . -Recurse -File
+```
+
+## トラブルシューティング Q&A
+
+| 症状 | 主な原因 | 解決策 |
+|------|---------|--------|
+| 引用が[?]で表示される・本文中に残る | `--citeproc` なし | `--citeproc` オプションを付ける |
+| 参考文献リストが空 | `.bib` へパス誤り／キーが未使用 | ファイルパスを確認・不要エントリ削除 |
+| 文献が2重出力 | Pandoc 3.6+ で `--citeproc` を付けずにWord出力 | `--citeproc` を明示する（3.6.4のリリースノート参照） |
 
 ### よくあるエラーと解決策
 
@@ -165,11 +205,69 @@ Pandocは、Markdownファイル内の `[@引用キー]` を解釈し、`.bib` �
 2. **引用キーが間違っている**
    - 解決策: `.bib`ファイル内の正確な引用キーを使用しているか確認します
 
+## VS Code 連携 Tips
+
+### Tasks.jsonでビルドタスクを登録
+
+VS Codeの `.vscode/tasks.json` にPandocビルドタスクを登録すると、ショートカットキー（Ctrl+Shift+B）で簡単にドキュメント生成ができます：
+
+```json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Word Document",
+      "type": "shell",
+      "command": "pandoc ${file} --citeproc --bibliography=references.bib --csl=vancouver-brackets.csl -o ${fileBasenameNoExtension}.docx",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
+```
+
+### Pandoc Citer拡張機能の活用
+
+「Pandoc Citer」拡張機能の設定をカスタマイズすることで、より効率的に引用を挿入できます：
+
+1. VS Codeの設定（Settings）を開く
+2. 「Pandoc Citer」で検索
+3. 以下の設定をカスタマイズ：
+   - `pandocciter.biblioFiles`: 複数の.bibファイルを指定
+   - `pandocciter.triggerCharacter`: 引用補完を開始する文字（デフォルトは`@`）
+
+### Better BibTeX + Zoteroで.bibを自動エクスポート
+
+Zoteroの「Better BibTeX」プラグインを使用すると、文献管理と.bibファイルの自動更新が可能になります：
+
+1. Zoteroに「Better BibTeX」プラグインをインストール
+2. コレクションを右クリック→「Better BibTeX」→「自動エクスポート」を選択
+3. 出力先を論文プロジェクトフォルダに設定
+4. 「自動更新を有効にする」にチェック
+
+これにより、Zoteroで文献を追加・編集すると自動的に.bibファイルが更新されます。
+
+## 参考リソース
+
+:::info
+**重要な参考リンク**
+
+- [Pandoc 公式マニュアル「9 Citations」](https://pandoc.org/chunkedhtml-demo/9-citations.html)
+- [CSL 公式スタイルレポジトリ](https://github.com/citation-style-language/styles)
+- [Pandoc FAQ "Why don't my citations appear?"](https://pandoc.org/faqs.html)
+:::
+
 ## まとめ
 
 1. **準備:** Pandocをインストールし、`.bib` ファイルを用意し、VS Codeに「Pandoc Citer」拡張機能をインストールします。
 2. **設定:** Markdownファイルの**先頭**に `---` で囲まれたYAMLメタデータブロックを記述し、`bibliography: [your_bib_file.bib]` で参照する `.bib` ファイルを指定します。**必ずファイルを保存します。**
 3. **執筆:** 本文中に `[@引用キー]` 形式で引用を挿入します。「Pandoc Citer」が `@` 入力時に候補を表示してくれます。
-4. **生成:** Pandocコマンドを使って、Markdownファイルと `.bib` ファイルから引用処理済みの最終ドキュメント（DOCX, PDFなど）を生成します。
+4. **生成:** Pandocコマンドを使って、Markdownファイルと `.bib` ファイルから引用処理済みの最終ドキュメント（Word形式）を生成します。**必ず `--citeproc` オプションを付けてください。**
 
-この手順に従えば、VS Code上で効率的に参考文献を管理しながら論文を執筆できるはずです。特に、YAMLメタデータブロックの正確な記述とファイルの保存が、引用補完機能を動作させる鍵となります。
+この手順に従えば、VS Code上で効率的に参考文献を管理しながら論文を執筆できるはずです。特に、YAMLメタデータブロックの正確な記述とファイルの保存が引用補完機能を動作させる鍵となり、`--citeproc` オプションの指定が正しい引用処理の鍵となります。
