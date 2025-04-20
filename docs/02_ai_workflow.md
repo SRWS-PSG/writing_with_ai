@@ -24,10 +24,7 @@ graph LR
 
 **AIツール活用ポイント**:
 - [section_outline.prompt](../resources/prompts/section_outline.prompt)を使用して、ボトムラインメッセージと論文の骨子を生成します。
-
-```bash
-cline --prompt-file resources/prompts/section_outline.prompt
-```
+- VS Codeで右クリックして「ファイルを開く」から`resources/prompts/section_outline.prompt`を選択し、内容をCopilot Chatに貼り付けて使用できます。
 
 ### 2. 結果セクションの執筆
 
@@ -41,10 +38,7 @@ cline --prompt-file resources/prompts/section_outline.prompt
 **AIツール活用ポイント**:
 - [stats2sentence.prompt](../resources/prompts/stats2sentence.prompt)を使用して、統計結果を適切な英文に変換します。
 - GitHub Copilotを使用して、結果の記述を補完します。
-
-```bash
-cline --prompt-file resources/prompts/stats2sentence.prompt
-```
+- VS Codeで`resources/prompts/stats2sentence.prompt`を開き、内容をCopilot Chatに貼り付けて使用できます。
 
 ### 3. 方法セクションの執筆
 
@@ -75,10 +69,7 @@ cline --prompt-file resources/prompts/stats2sentence.prompt
 **AIツール活用ポイント**:
 - Copilot Chatに「この結果の臨床的意義は？」と質問します。
 - [refinement.prompt](../resources/prompts/refinement.prompt)を使用して、考察の文章を医学雑誌スタイルに調整します。
-
-```bash
-cline --prompt-file resources/prompts/refinement.prompt
-```
+- VS Codeで`resources/prompts/refinement.prompt`を開き、内容をCopilot Chatに貼り付けて使用できます。
 
 ### 5. 背景（イントロダクション）の執筆
 
@@ -130,7 +121,7 @@ VS Codeの`.vscode/copilot-chat.json`には、論文の各セクションを生�
 
 ### Claude (Cline)
 
-- **プロンプトファイルの使用**: `cline --prompt-file`コマンドでプロンプトファイルを指定します。
+- **プロンプトファイルの使用**: プロンプトファイルの内容をコピーしてClaudeのWebインターフェースに貼り付けて使用します。
 - **文章の洗練**: 書いた文章を医学雑誌スタイルに調整します。
 - **引用文献の生成**: 特定のトピックに関する引用文献リストを生成します。
 
