@@ -6,20 +6,20 @@
 
 ## 🚀 クイックスタート (10分)
 
-1. **リポジトリをクローン**
-   ```bash
-   git clone https://github.com/SRWS-PSG/writing_with_ai.git
-   cd writing_with_ai
-   ```
+1. **リポジトリを取得**
+   - GitHub Desktopを開く
+   - 「File」→「Clone Repository」をクリック
+   - URLタブで `https://github.com/SRWS-PSG/writing_with_ai.git` を入力
+   - ローカルパスを選択して「Clone」をクリック
 
 2. **テンプレートを選択**
-   - `templates/`ディレクトリから適切なテンプレートをコピー
-   - 例: `cp templates/results_first_template.md my_paper.md`
+   - エクスプローラーで `templates` フォルダを開く
+   - 適切なテンプレート（例: `results_first_template.md`）を選択
+   - コピーして任意の場所に保存（例: `my_paper.md`）
 
 3. **VS Codeで開く**
-   ```bash
-   code my_paper.md
-   ```
+   - VS Codeを起動
+   - 「File」→「Open File」から保存したファイルを選択
 
 4. **ビルド実行**
    - `Ctrl+Shift+B`でビルドタスクを実行
@@ -91,38 +91,38 @@ graph LR
 
 詳細は[AIを活用した執筆ワークフロー](docs/02_ai_workflow.md)を参照してください。
 
-## 🛠️ ビルド & リントコマンド
+## 🛠️ ビルド & チェック機能
 
 VS Codeでは以下のタスクが利用可能です：
 
 - **ビルド**: `Ctrl+Shift+B` - Markdownファイルをdocxに変換
-- **リント**: `Tasks: Run Task` → `lint-md` - Markdownの文法チェック
-- **スペルチェック**: `Tasks: Run Task` → `spell-check` - スペルチェック
+- **リント**: 
+  1. `Ctrl+Shift+P`でコマンドパレットを開く
+  2. `Tasks: Run Task`と入力
+  3. `lint-md`を選択 - Markdownの文法チェック
+- **スペルチェック**: 
+  1. `Ctrl+Shift+P`でコマンドパレットを開く
+  2. `Tasks: Run Task`と入力
+  3. `spell-check`を選択 - スペルチェック
 
-コマンドラインからは以下のように実行できます：
-
-```bash
-# 単一ファイルのビルド
-./scripts/build.sh your_paper.md
-
-# すべてのテンプレートをビルド
-./scripts/build.sh --all
-```
+複数のファイルを一括処理する場合は、VS Codeのエクスプローラービューで各ファイルを開いて処理するか、サポートが必要な場合は[Gitとガバナンス](docs/03_git_gov.md)を参照してください。
 
 ## 🙋‍♂️ FAQ
 
 ### Pandocのインストール方法は？
 
-```bash
-# Ubuntuの場合
-sudo apt-get install pandoc
+**Windows**:
+1. [Pandocダウンロードページ](https://pandoc.org/installing.html)にアクセス
+2. Windowsインストーラー(.msi)をダウンロード
+3. ダウンロードしたファイルをダブルクリックして指示に従いインストール
 
-# macOSの場合
-brew install pandoc
+**macOS**:
+1. [Pandocダウンロードページ](https://pandoc.org/installing.html)にアクセス
+2. macOSパッケージ(.pkg)をダウンロード
+3. ダウンロードしたファイルをダブルクリックして指示に従いインストール
 
-# Windowsの場合
-choco install pandoc
-```
+**または**:
+- Homebrewがインストールされている場合は、「Homebrew」アプリから検索してインストール
 
 ### 引用文献が正しく処理されません
 
