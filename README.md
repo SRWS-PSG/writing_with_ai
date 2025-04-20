@@ -8,7 +8,7 @@
 
 > **対象:**  
 > *英語論文執筆に不慣れな臨床医* が **Git 未経験でも** 最速でテンプレ → Word 出力まで完了させる手順です。  
-> VS Code + Dev Container を利用するため、Pandoc などの依存は自動で揃います。
+> VS Code を利用して、Pandoc などの依存関係をセットアップします。
 
 ---
 
@@ -20,7 +20,7 @@
 | **macOS** | `brew install git` | `brew install --cask visual-studio-code` | 同上 |
 | **Ubuntu** | `sudo apt install git` | `sudo snap install code --classic` | `sudo apt install docker.io docker-compose` |
 
-> ¹ **Dev Container** を使わない場合は Docker 不要ですが、入れておくと依存解決がワンクリックになります。  
+> ¹ Docker は必須ではありませんが、入れておくと将来的な拡張性が高まります。  
 > ² PATH が反映されない場合は再ログインしてください。
 
 詳細な環境セットアップ手順は[環境セットアップガイド](docs/00_environment_setup.md)を参照してください。
@@ -46,8 +46,8 @@ cd writing_with_ai
 code .
 ```
 
-画面右下のポップアップで "Reopen in Container" をクリック  
-（.devcontainer が自動で Pandoc・LaTeX・Node などをインストール）
+VS Code が起動したら、必要な拡張機能をインストールします  
+（Markdown All in One、markdownlint、Pandoc Citer など）
 
 ---
 
@@ -73,7 +73,7 @@ code .
 
 ### 5. よくあるエラー & 対処
 
-- **依存関係エラー**: Dev Container または Codespaces を使用すると自動的に解決されます
+- **依存関係エラー**: 必要なパッケージ（Pandoc、LaTeX など）がインストールされているか確認してください
 - **ビルドエラー**: VS Code のターミナルでエラーメッセージを確認し、必要なパッケージをインストールしてください
 - **テンプレート選択エラー**: 手動で templates フォルダからテンプレートをコピーして使用することもできます
 
@@ -172,17 +172,7 @@ VS Codeでは以下のタスクが利用可能です：
 
 ## 🙋‍♂️ よくある質問
 
-### Dev Containerが動作しません
-
-以下を確認してください：
-1. Docker Desktopが正しくインストールされ、実行されているか
-2. VS Codeの「Remote - Containers」拡張機能がインストールされているか
-3. VS Codeを再起動してみる
-
 ### Pandocのインストール方法は？
-
-**Dev Containerを使用する場合**:
-- 自動的にインストールされるため、手動インストールは不要です
 
 **手動インストールの場合**:
 - **Windows**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からインストーラー(.msi)をダウンロードして実行
@@ -204,7 +194,7 @@ VS Codeでは、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプ�
 - Pandoc Citer
 - GitHub Copilot
 - GitHub Copilot Chat
-- Remote - Containers（Dev Container使用時）
+
 
 詳細は[VS Codeのインストール方法](docs/00_environment_setup.md#vs-codeの拡張機能)を参照してください。
 
