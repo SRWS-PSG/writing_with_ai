@@ -57,10 +57,11 @@ writing_with_ai/
 
 詳細な使い方は以下のドキュメントを参照してください：
 
-1. [リポジトリ概要とガイド](docs/00_overview.md)
-2. [Markdown基礎](docs/01_markdown.md)
-3. [AIを活用した執筆ワークフロー](docs/02_ai_workflow.md)
-4. [Gitとガバナンス](docs/03_git_gov.md)
+1. [環境セットアップガイド](docs/00_environment_setup.md)
+2. [リポジトリ概要とガイド](docs/01_overview.md)
+3. [Markdown基礎](docs/02_markdown.md)
+4. [AIを活用した執筆ワークフロー](docs/03_ai_workflow.md)
+5. [Gitとガバナンス](docs/04_git_gov.md)
 
 ## 🤖 AIワークフロー チートシート
 
