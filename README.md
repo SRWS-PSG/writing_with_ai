@@ -6,24 +6,23 @@
 
 ## 🚀 クイックスタート (10分)
 
-1. **リポジトリを取得**
-   - GitHub Desktopを開く
-   - 「File」→「Clone Repository」をクリック
-   - URLタブで `https://github.com/SRWS-PSG/writing_with_ai.git` を入力
-   - ローカルパスを選択して「Clone」をクリック
+1. **VS Codeを起動**
+   - デスクトップまたはスタートメニューからVS Codeを起動
+   - 「File」→「Open Folder」を選択
+   - 論文を保存したいフォルダを選択または新規作成
 
-2. **テンプレートを選択**
-   - エクスプローラーで `templates` フォルダを開く
-   - 適切なテンプレート（例: `results_first_template.md`）を選択
-   - コピーして任意の場所に保存（例: `my_paper.md`）
+2. **テンプレートを取得**
+   - 「File」→「New File」を選択し、新しいファイルを作成
+   - [templates/results_first_template.md](https://github.com/SRWS-PSG/writing_with_ai/blob/main/templates/results_first_template.md)の内容をコピー
+   - 新しいファイルに貼り付けて「Save」（例: `my_paper.md`として保存）
 
-3. **VS Codeで開く**
-   - VS Codeを起動
-   - 「File」→「Open File」から保存したファイルを選択
+3. **論文を編集**
+   - テンプレートの指示に従って内容を編集
+   - GitHub Copilotが有効な場合は、AIの提案を活用
 
 4. **ビルド実行**
    - `Ctrl+Shift+B`でビルドタスクを実行
-   - 生成されたdocxファイルを確認
+   - 同じフォルダに生成されたdocxファイルを確認
 
 ## 🗺️ リポジトリマップ
 
@@ -132,9 +131,7 @@ VS Codeでは以下のタスクが利用可能です：
 1. YAMLフロントマターに`bibliography`と`csl`が正しく設定されているか
 2. Pandocコマンドに`--citeproc`オプションが指定されているか
 
-```bash
-pandoc paper.md --citeproc -o paper.docx
-```
+VS Codeでは、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプション付きでビルドが実行されます。
 
 ### VS Codeの推奨拡張機能は？
 
