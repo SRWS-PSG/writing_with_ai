@@ -6,19 +6,21 @@
 
 1. [必要なツール](#必要なツール)
 2. [VS Codeのインストール](#vs-codeのインストール)
-3. [Pandocのインストール](#pandocのインストール)
-4. [GitHub Desktopのインストール](#github-desktopのインストール)
-5. [リポジトリのクローン](#リポジトリのクローン)
-6. [VS Code拡張機能のインストール](#vs-code拡張機能のインストール)
-7. [次のステップ](#次のステップ)
+3. [Gitのインストール](#gitのインストール)
+4. [Pandocのインストール](#pandocのインストール)
+5. [GitHub Desktopのインストール](#github-desktopのインストール)
+6. [リポジトリのフォークとクローン](#リポジトリのフォークとクローン)
+7. [VS Code拡張機能のインストール](#vs-code拡張機能のインストール)
+8. [次のステップ](#次のステップ)
 
 ## 必要なツール
 
 論文執筆のために以下のツールをインストールする必要があります：
 
 - **VS Code**: テキストエディタ（Markdownファイルの編集に使用）
+- **Git**: バージョン管理システム（リポジトリのフォークとクローンに必要）
 - **Pandoc**: ドキュメント変換ツール（MarkdownをWordファイルに変換）
-- **GitHub Desktop**: リポジトリ管理ツール（オプション、共同執筆時に便利）
+- **GitHub Desktop**: リポジトリ管理ツール（GUIでGit操作を行うために便利）
 
 ## VS Codeのインストール
 
@@ -45,6 +47,40 @@ VS Codeの表示言語を日本語に変更するには：
 3. 検索ボックスに「Japanese」と入力します
 4. 「Japanese Language Pack for Visual Studio Code」をインストールします
 5. インストール完了後、右下に表示される「Restart to apply」をクリックしてVS Codeを再起動します
+
+## Gitのインストール
+
+Gitは、ファイルの変更履歴を管理するためのバージョン管理システムです。リポジトリのフォークやクローンに必要です。
+
+### Windows
+
+1. [Git for Windowsダウンロードページ](https://gitforwindows.org/)にアクセスします
+2. 「Download」ボタンをクリックし、インストーラーをダウンロードします
+3. ダウンロードしたインストーラーを実行し、以下の設定でインストールを進めます：
+   - コンポーネント選択画面では、デフォルト設定のままで「Next」をクリック
+   - エディタ選択画面では「Use Visual Studio Code as Git's default editor」を選択
+   - PATH環境変数の設定画面では「Git from the command line and also from 3rd-party software」を選択
+   - HTTPS転送設定画面ではデフォルト設定のままで「Next」をクリック
+   - 改行コード設定画面では「Checkout Windows-style, commit Unix-style line endings」を選択
+   - ターミナルエミュレータ設定画面では「Use Windows' default console window」を選択
+   - その他の設定画面ではデフォルト設定のままで「Install」をクリック
+
+### macOS
+
+1. [Git公式サイト](https://git-scm.com/download/mac)にアクセスします
+2. 以下のいずれかの方法でインストールします：
+   - **方法1**: [macOS用Gitインストーラー](https://sourceforge.net/projects/git-osx-installer/)をダウンロードして実行
+   - **方法2**: App Storeから「Xcode」をインストール（大容量のため時間がかかります）
+   - **方法3**: Homebrewがインストールされている場合は、「Homebrew」アプリから「git」を検索してインストール
+
+### GitHubアカウントの作成
+
+リポジトリをフォークするには、GitHubアカウントが必要です：
+
+1. [GitHub公式サイト](https://github.com/)にアクセスします
+2. 「Sign up」ボタンをクリックします
+3. 指示に従ってメールアドレス、パスワード、ユーザー名を入力します
+4. アカウント作成後、メール認証を完了します
 
 ## Pandocのインストール
 
@@ -77,18 +113,31 @@ GitHub Desktopは、コマンドラインを使わずにGitリポジトリを管
 4. インストール後、GitHub Desktopを起動し、GitHubアカウントでサインインします
    - アカウントをお持ちでない場合は、[GitHub公式サイト](https://github.com/)で作成できます
 
-## リポジトリのクローン
+## リポジトリのフォークとクローン
 
-リポジトリをローカルコンピュータにコピー（クローン）するには：
+### リポジトリのフォーク（自分のGitHubアカウントにコピー）
+
+リポジトリをフォークすると、自分のGitHubアカウントに独自のコピーが作成され、変更を加えることができます：
+
+1. Webブラウザで[writing_with_aiリポジトリ](https://github.com/SRWS-PSG/writing_with_ai)にアクセスします
+2. 右上の「Fork」ボタンをクリックします
+3. 「Create fork」ボタンをクリックします
+4. フォークが完了すると、自分のGitHubアカウント内にリポジトリのコピーが作成されます
+
+### リポジトリのクローン（ローカルコンピュータにダウンロード）
+
+フォークしたリポジトリをローカルコンピュータにコピー（クローン）するには：
 
 1. GitHub Desktopを開きます
 2. 「File」→「Clone Repository」をクリックします
-3. URLタブを選択し、以下のURLを入力します：
+3. 「GitHub.com」タブを選択します
+4. 自分のアカウント名の下に表示される「writing_with_ai」リポジトリを選択します
+   - または、URLタブを選択し、以下のようなURLを入力します（`あなたのユーザー名`を実際のGitHubユーザー名に置き換えてください）：
    ```
-   https://github.com/SRWS-PSG/writing_with_ai.git
+   https://github.com/あなたのユーザー名/writing_with_ai.git
    ```
-4. ローカルパスを選択し、「Clone」ボタンをクリックします
-5. クローンが完了すると、リポジトリのファイルがローカルコンピュータに保存されます
+5. ローカルパスを選択し、「Clone」ボタンをクリックします
+6. クローンが完了すると、リポジトリのファイルがローカルコンピュータに保存されます
 
 ## VS Code拡張機能のインストール
 
