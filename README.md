@@ -14,14 +14,14 @@
 
 ### 0. 環境セットアップ（所要 5 分）
 
-| OS | Git | VS Code | Docker Desktop¹ |
+| OS | Git | VS Code | Pandoc |
 |----|-----|---------|-----------------|
-| **Windows** | `winget install --id Git.Git -e` | `winget install --id Microsoft.VisualStudioCode -e` | [Download](https://www.docker.com/products/docker-desktop/) |
-| **macOS** | `brew install git` | `brew install --cask visual-studio-code` | 同上 |
-| **Ubuntu** | `sudo apt install git` | `sudo snap install code --classic` | `sudo apt install docker.io docker-compose` |
+| **Windows** | [GitHub Desktop](https://desktop.github.com/) | [VS Code](https://code.visualstudio.com/) | [Pandoc](https://pandoc.org/installing.html) |
+| **macOS** | [GitHub Desktop](https://desktop.github.com/) | [VS Code](https://code.visualstudio.com/) | [Pandoc](https://pandoc.org/installing.html) |
+| **Ubuntu** | [GitHub Desktop](https://desktop.github.com/) | [VS Code](https://code.visualstudio.com/) | [Pandoc](https://pandoc.org/installing.html) |
 
-> ¹ **Dev Container** を使わない場合は Docker 不要ですが、入れておくと依存解決がワンクリックになります。  
-> ² PATH が反映されない場合は再ログインしてください。
+> ¹ 各ソフトウェアは公式サイトからダウンロードしてインストールしてください。
+> ² インストール後、アプリケーションを再起動する必要がある場合があります。
 
 詳細な環境セットアップ手順は[環境セットアップガイド](docs/00_environment_setup.md)を参照してください。
 
@@ -29,25 +29,31 @@
 
 ### 1. レポジトリを取得（1 分）
 
-```bash
-git clone https://github.com/SRWS-PSG/writing_with_ai.git
-cd writing_with_ai
-```
+**GitHub Desktop を使用する場合**:
+1. GitHub Desktop を開く
+2. 「File」→「Clone Repository」をクリック
+3. URL タブを選択し、`https://github.com/SRWS-PSG/writing_with_ai.git` を入力
+4. ローカルパスを選択し、「Clone」をクリック
 
-> Git が使えない PC では
-> 1. GitHub → 「🡇 Code」→ Download ZIP をクリック
-> 2. ZIP を展開してフォルダを開く
+**または**:
+1. GitHub → 「🡇 Code」→ Download ZIP をクリック
+2. ZIP を展開してフォルダを開く
 
 ---
 
 ### 2. VS Code で開く（1 分）
 
-```bash
-code .
-```
+**GitHub Desktop から開く場合**:
+1. GitHub Desktop で、クローンしたリポジトリを選択
+2. 「Open in Visual Studio Code」ボタンをクリック
 
-画面右下のポップアップで "Reopen in Container" をクリック  
-（.devcontainer が自動で Pandoc・LaTeX・Node などをインストール）
+**または**:
+1. VS Code を起動
+2. 「ファイル」→「フォルダーを開く」をクリック
+3. クローンしたリポジトリのフォルダを選択して「開く」をクリック
+
+VS Code が起動したら、必要な拡張機能をインストールします  
+（Markdown All in One、markdownlint、Pandoc Citer など）
 
 ---
 
@@ -171,23 +177,11 @@ VS Codeでは以下のタスクが利用可能です：
 複数のファイルを一括処理する場合は、VS Codeのエクスプローラービューで各ファイルを開いて処理するか、サポートが必要な場合は[Gitとガバナンス](docs/04_git_gov.md)を参照してください。
 
 ## 🙋‍♂️ よくある質問
-
-### Dev Containerが動作しません
-
-以下を確認してください：
-1. Docker Desktopが正しくインストールされ、実行されているか
-2. VS Codeの「Remote - Containers」拡張機能がインストールされているか
-3. VS Codeを再起動してみる
-
 ### Pandocのインストール方法は？
 
-**Dev Containerを使用する場合**:
-- 自動的にインストールされるため、手動インストールは不要です
-
-**手動インストールの場合**:
 - **Windows**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からインストーラー(.msi)をダウンロードして実行
-- **macOS**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からパッケージ(.pkg)をダウンロードして実行、またはHomebrewで`brew install pandoc`
-- **Ubuntu**: `sudo apt install pandoc`
+- **macOS**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からパッケージ(.pkg)をダウンロードして実行
+- **Ubuntu**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からdebパッケージをダウンロードして、ソフトウェアセンターでインストール
 
 ### 引用文献が正しく処理されません
 
@@ -204,7 +198,6 @@ VS Codeでは、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプ�
 - Pandoc Citer
 - GitHub Copilot
 - GitHub Copilot Chat
-- Remote - Containers（Dev Container使用時）
 
 詳細は[VS Codeのインストール方法](docs/00_environment_setup.md#vs-codeの拡張機能)を参照してください。
 
