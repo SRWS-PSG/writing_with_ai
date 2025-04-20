@@ -122,8 +122,6 @@ writing_with_ai/
 ├── resources/           # 各種リソース
 │   ├── csl/             # 引用スタイル
 │   └── prompts/         # AIプロンプトライブラリ
-├── .devcontainer/       # Dev Container設定
-│   └── devcontainer.json # 開発環境の自動セットアップ
 └── README.md            # はじめに + 最短10分で動かす手順
 ```
 
