@@ -2,6 +2,28 @@
 
 このリポジトリは、AIを活用した論文執筆をサポートするためのリソースを提供します。初学者でも簡単に論文執筆を始められるよう、必要なツールのインストール方法や使い方を解説しています。
 
+## AIを活用した論文執筆ワークフロー
+
+以下は、AIツール（GitHub CopilotやClaude）を活用した論文執筆の基本的なワークフローです：
+
+```mermaid
+graph LR
+  A[研究計画] -->|Copilot Outline| B(Draft.md)
+  B -->|Cline Polishing| C(Review PR)
+  C --> D[最終原稿]
+  
+  style A fill:#f9f9f9,stroke:#333,stroke-width:1px
+  style B fill:#e1f5fe,stroke:#0288d1,stroke-width:1px
+  style C fill:#e8f5e9,stroke:#388e3c,stroke-width:1px
+  style D fill:#fff3e0,stroke:#f57c00,stroke-width:1px
+```
+
+各ステップでのAIツール活用ポイント：
+- **研究計画**: [section_outline.prompt](resources/prompts/section_outline.prompt)を使用して論文の骨子を生成
+- **ドラフト作成**: GitHub Copilotを使用して各セクションの文章を生成・補完
+- **文章洗練**: [refinement.prompt](resources/prompts/refinement.prompt)を使用して医学雑誌スタイルに調整
+- **統計結果の記述**: [stats2sentence.prompt](resources/prompts/stats2sentence.prompt)を使用して統計結果を英文に変換
+
 ## 目次
 
 1. [VS Codeのインストール方法](docs/vs_code_installation.md)

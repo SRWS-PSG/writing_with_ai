@@ -8,9 +8,10 @@
 2. [リポジトリのフォーク（コピー）](#リポジトリのフォーク)
 3. [Gitのインストール](#gitのインストール)
 4. [リポジトリのクローン（ダウンロード）](#リポジトリのクローン)
-5. [推奨拡張機能のインストール](#推奨拡張機能のインストール)
-6. [VS Codeでの作業](#vs-codeでの作業)
-7. [よくある質問](#よくある質問)
+5. [GitHub Desktopの使い方](#github-desktopの使い方)
+6. [推奨拡張機能のインストール](#推奨拡張機能のインストール)
+7. [VS Codeでの作業](#vs-codeでの作業)
+8. [よくある質問](#よくある質問)
 
 ## GitHubアカウントの作成
 
@@ -105,6 +106,80 @@ GitHubを使うには、まずアカウントが必要です。
    git clone https://github.com/あなたのユーザー名/writing_with_ai.git
    ```
 6. Enterキーを押すと、ダウンロードが始まります
+
+## GitHub Desktopの使い方
+
+コマンドラインが苦手な方は、GitHub Desktopというグラフィカルなアプリケーションを使うと、より簡単にGitHubのリポジトリを管理できます。
+
+### GitHub Desktopのインストール
+
+1. [GitHub Desktop公式サイト](https://desktop.github.com/)にアクセスします
+2. 「Download for Windows」または「Download for macOS」ボタンをクリックします
+3. ダウンロードしたインストーラーを実行します
+4. 画面の指示に従ってインストールを完了します
+
+### GitHub Desktopでリポジトリをクローンする
+
+1. GitHub Desktopを起動します
+2. 「File」メニューから「Clone Repository」を選択します
+
+   ![Clone Repository](https://docs.github.com/assets/cb-19595/mw-1440/images/help/desktop/clone-file-menu-mac.webp)
+
+3. 「GitHub.com」タブを選択します
+4. 自分のアカウントに表示されるリポジトリ一覧から、クローンしたいリポジトリ（例：あなたのユーザー名/writing_with_ai）を選択します
+   - リストに表示されない場合は、検索ボックスにリポジトリ名を入力して検索します
+   - または「URL」タブを選択し、リポジトリのURLを直接入力することもできます
+
+   ![Clone Repository Dialog](https://docs.github.com/assets/cb-33207/mw-1440/images/help/desktop/clone-repository-dialog.webp)
+
+5. 「Local Path」でクローン先のフォルダを選択します
+6. 「Clone」ボタンをクリックします
+
+これで、リポジトリがローカルPCにクローンされます。
+
+### GitHub Desktopでの基本操作
+
+#### 変更の確認と保存（コミット）
+
+1. ファイルを編集すると、GitHub Desktopの左側に変更されたファイルが表示されます
+2. 変更内容を確認し、コミットメッセージ（変更内容の説明）を入力します
+3. 「Commit to main」ボタンをクリックして変更を保存します
+
+   ![Commit Changes](https://docs.github.com/assets/cb-32137/mw-1440/images/help/desktop/commit-button.webp)
+
+#### 変更のアップロード（プッシュ）
+
+1. 変更をコミットした後、「Push origin」ボタンをクリックして変更をGitHubにアップロードします
+
+   ![Push Changes](https://docs.github.com/assets/cb-49882/mw-1440/images/help/desktop/push-origin-button.webp)
+
+#### 最新の変更を取得（プル）
+
+1. 他の人が変更を加えた場合、「Fetch origin」ボタンをクリックして最新の変更を確認します
+2. 変更がある場合は「Pull origin」ボタンが表示されるので、クリックして最新の変更を取り込みます
+
+#### ブランチの作成と切り替え
+
+1. 現在のブランチ名が表示されているボタンをクリックします
+2. 「New Branch」ボタンをクリックします
+3. ブランチ名を入力して「Create Branch」ボタンをクリックします
+
+   ![Create Branch](https://docs.github.com/assets/cb-45366/mw-1440/images/help/desktop/click-create-branch.webp)
+
+4. 作成したブランチに自動的に切り替わります
+5. 別のブランチに切り替えるには、ブランチ名が表示されているボタンをクリックし、切り替えたいブランチを選択します
+
+### VS Codeとの連携
+
+GitHub Desktopは、VS Codeと簡単に連携できます。
+
+1. リポジトリを選択した状態で、「Repository」メニューから「Open in Visual Studio Code」を選択します
+
+   ![Open in VS Code](https://docs.github.com/assets/cb-54129/mw-1440/images/help/desktop/open-in-vscode.webp)
+
+2. VS Codeが起動し、リポジトリのフォルダが開きます
+
+これにより、GitHub Desktopでリポジトリを管理しながら、VS Codeでコードを編集することができます。
 
 ## 推奨拡張機能のインストール
 
