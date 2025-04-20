@@ -2,23 +2,19 @@
 
 > 医療者向け「AI × Markdown × GitHub」で英語論文を書くスターターキット
 
-このリポジトリは、英語論文を書くことが苦手な医療者が、AIツール（GitHub CopilotやClaude）とテンプレートを活用して、効率的に臨床医学論文を執筆できるようにすることを目的としています。
+このリポジトリは、英語論文を書くことが苦手な医療者が、AI ツール（GitHub Copilot や Claude）とテンプレートを活用して、効率的に臨床医学論文を執筆できるようにすることを目的としています。
 
 ## :beginner: Quick Start – まず 10 分で書き始める
 
 > **対象:**  
-> *英語論文執筆に不慣れな臨床医* が **Git 未経験でも** 最速でテンプレ → Word 出力まで完了させる手順です。  
+> _英語論文執筆に不慣れな臨床医_ が **Git 未経験でも** 最速でテンプレ → Word 出力まで完了させる手順です。  
 > VS Code + Dev Container を利用するため、Pandoc などの依存は自動で揃います。
 
 ---
 
 ### 0. 環境セットアップ（所要 5 分）
 
-| OS | Git | VS Code | Pandoc |
-|----|-----|---------|-----------------|
-| **Windows** | [GitHub Desktop](https://desktop.github.com/) | [VS Code](https://code.visualstudio.com/) | [Pandoc](https://pandoc.org/installing.html) |
-| **macOS** | [GitHub Desktop](https://desktop.github.com/) | [VS Code](https://code.visualstudio.com/) | [Pandoc](https://pandoc.org/installing.html) |
-| **Ubuntu** | [GitHub Desktop](https://desktop.github.com/) | [VS Code](https://code.visualstudio.com/) | [Pandoc](https://pandoc.org/installing.html) |
+[GitHub Desktop](https://desktop.github.com/) | [VS Code](https://code.visualstudio.com/) | [Pandoc](https://pandoc.org/installing.html) |
 
 > ¹ 各ソフトウェアは公式サイトからダウンロードしてインストールしてください。
 > ² インストール後、アプリケーションを再起動する必要がある場合があります。
@@ -29,35 +25,18 @@
 
 ### 1. レポジトリを取得（1 分）
 
-**GitHub Desktop を使用する場合**:
-1. GitHub Desktop を開く
-2. 「File」→「Clone Repository」をクリック
-3. URL タブを選択し、`https://github.com/SRWS-PSG/writing_with_ai.git` を入力
-4. ローカルパスを選択し、「Clone」をクリック
-
-**または**:
-1. GitHub → 「🡇 Code」→ Download ZIP をクリック
-2. ZIP を展開してフォルダを開く
-
----
-
-### 2. VS Code で開く（1 分）
-
-**GitHub Desktop から開く場合**:
-1. GitHub Desktop で、クローンしたリポジトリを選択
-2. 「Open in Visual Studio Code」ボタンをクリック
-
-**または**:
 1. VS Code を起動
-2. 「ファイル」→「フォルダーを開く」をクリック
-3. クローンしたリポジトリのフォルダを選択して「開く」をクリック
+2. 左側のアクティビティバーから「ソース管理」アイコン（分岐アイコン）をクリック
+3. 「リポジトリのクローン」ボタンをクリック
+4. 「https://github.com/SRWS-PSG/writing_with_ai.git」などのリポジトリURLを入力
+5. クローン先のローカルフォルダを選択 (このときクラウドストレージと同期しているフォルダを使わないこと！)
+6. 一番左上のドキュメントアイコンをクリック
 
-VS Code が起動したら、必要な拡張機能をインストールします  
-（Markdown All in One、markdownlint、Pandoc Citer など）
+> これで、レポジトリを取得できました。クローンは、クラウド上のレポジトリを自分の PC にコピーすることを指します。
 
 ---
 
-### 3. テンプレートを複製（30 秒）
+### 2. テンプレートを複製（30 秒）
 
 1. Ctrl + Shift + P → Templates: New Paper
 
@@ -67,7 +46,7 @@ VS Code が起動したら、必要な拡張機能をインストールします
 
 ---
 
-### 4. Word ファイルを生成（30 秒）
+### 3. Word ファイルを生成（30 秒）
 
 1. Ctrl + Shift + B
 
@@ -79,7 +58,6 @@ VS Code が起動したら、必要な拡張機能をインストールします
 
 ### 5. よくあるエラー & 対処
 
-- **依存関係エラー**: Dev Container または Codespaces を使用すると自動的に解決されます
 - **ビルドエラー**: VS Code のターミナルでエラーメッセージを確認し、必要なパッケージをインストールしてください
 - **テンプレート選択エラー**: 手動で templates フォルダからテンプレートをコピーして使用することもできます
 
@@ -87,9 +65,9 @@ VS Code が起動したら、必要な拡張機能をインストールします
 
 ### Codespaces / ブラウザだけで始める
 
-Git & Docker を入れられない場合は次のボタンから GitHub Codespaces を起動すれば、ブラウザだけで上記 2‑4 章が実行できます。
+Git を入れられない場合は次のボタンから GitHub Codespaces を起動すれば、ブラウザだけで下記 1-4 章が実行できます。環境には必要なツール（Pandoc など）が自動的にインストールされます。
 
-[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=SRWS-PSG/writing_with_ai)
+[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/SRWS-PSG/writing_with_ai)
 
 ---
 
@@ -125,13 +103,16 @@ writing_with_ai/
 ├── .github/             # GitHub関連設定
 │   ├── workflows/       # CI/CDワークフロー
 │   └── PULL_REQUEST_TEMPLATE.md # PRテンプレート
+├── .devcontainer/       # Codespaces/Dev Container設定
+│   ├── devcontainer.json # 開発環境設定
+│   └── Dockerfile       # 環境構築設定
 ├── resources/           # 各種リソース
 │   ├── csl/             # 引用スタイル
 │   └── prompts/         # AIプロンプトライブラリ
 └── README.md            # はじめに + 最短10分で動かす手順
 ```
 
-## 🤖 AIワークフロー チートシート
+## 🤖 AI ワークフロー チートシート
 
 「結果から投稿への道のり」アプローチに基づいた執筆ワークフロー：
 
@@ -143,7 +124,7 @@ graph LR
   D --> E(背景セクション)
   E --> F(要旨)
   F --> G[最終原稿]
-  
+
   style A fill:#f9f9f9,stroke:#333,stroke-width:1px
   style B fill:#e1f5fe,stroke:#0288d1,stroke-width:1px
   style C fill:#e8f5e9,stroke:#388e3c,stroke-width:1px
@@ -153,45 +134,48 @@ graph LR
   style G fill:#fce4ec,stroke:#e91e63,stroke-width:1px
 ```
 
-各ステップでのAIツール活用ポイント：
+各ステップでの AI ツール活用ポイント：
+
 - **結果の整理**: [section_outline.prompt](resources/prompts/section_outline.prompt)を使用
 - **結果セクション**: [stats2sentence.prompt](resources/prompts/stats2sentence.prompt)を使用
 - **文章洗練**: [refinement.prompt](resources/prompts/refinement.prompt)を使用
 
-詳細は[AIを活用した執筆ワークフロー](docs/03_ai_workflow.md)を参照してください。
+詳細は[AI を活用した執筆ワークフロー](docs/03_ai_workflow.md)を参照してください。
 
 ## 🛠️ ビルド & チェック機能
 
-VS Codeでは以下のタスクが利用可能です：
+VS Code では以下のタスクが利用可能です：
 
-- **ビルド**: `Ctrl+Shift+B` - Markdownファイルをdocxに変換
-- **リント**: 
+- **ビルド**: `Ctrl+Shift+B` - Markdown ファイルを docx に変換
+- **リント**:
   1. `Ctrl+Shift+P`でコマンドパレットを開く
   2. `Tasks: Run Task`と入力
-  3. `lint-md`を選択 - Markdownの文法チェック
-- **スペルチェック**: 
+  3. `lint-md`を選択 - Markdown の文法チェック
+- **スペルチェック**:
   1. `Ctrl+Shift+P`でコマンドパレットを開く
   2. `Tasks: Run Task`と入力
   3. `spell-check`を選択 - スペルチェック
 
-複数のファイルを一括処理する場合は、VS Codeのエクスプローラービューで各ファイルを開いて処理するか、サポートが必要な場合は[Gitとガバナンス](docs/04_git_gov.md)を参照してください。
+複数のファイルを一括処理する場合は、VS Code のエクスプローラービューで各ファイルを開いて処理するか、サポートが必要な場合は[Git とガバナンス](docs/04_git_gov.md)を参照してください。
 
 ## 🙋‍♂️ よくある質問
-### Pandocのインストール方法は？
 
-- **Windows**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からインストーラー(.msi)をダウンロードして実行
-- **macOS**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からパッケージ(.pkg)をダウンロードして実行
-- **Ubuntu**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からdebパッケージをダウンロードして、ソフトウェアセンターでインストール
+### Pandoc のインストール方法は？
+
+- **Windows**: [Pandoc ダウンロードページ](https://pandoc.org/installing.html)からインストーラー(.msi)をダウンロードして実行
+- **macOS**: [Pandoc ダウンロードページ](https://pandoc.org/installing.html)からパッケージ(.pkg)をダウンロードして実行
+- **Ubuntu**: [Pandoc ダウンロードページ](https://pandoc.org/installing.html)から deb パッケージをダウンロードして、ソフトウェアセンターでインストール
 
 ### 引用文献が正しく処理されません
 
 以下を確認してください：
-1. YAMLフロントマターに`bibliography`と`csl`が正しく設定されているか
-2. Pandocコマンドに`--citeproc`オプションが指定されているか
 
-VS Codeでは、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプション付きでビルドが実行されます。
+1. YAML フロントマターに`bibliography`と`csl`が正しく設定されているか
+2. Pandoc コマンドに`--citeproc`オプションが指定されているか
 
-### VS Codeの推奨拡張機能は？
+VS Code では、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプション付きでビルドが実行されます。
+
+### VS Code の推奨拡張機能は？
 
 - Markdown All in One
 - markdownlint
@@ -199,8 +183,8 @@ VS Codeでは、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプ�
 - GitHub Copilot
 - GitHub Copilot Chat
 
-詳細は[VS Codeのインストール方法](docs/00_environment_setup.md#vs-codeの拡張機能)を参照してください。
+詳細は[VS Code のインストール方法](docs/00_environment_setup.md#vs-codeの拡張機能)を参照してください。
 
 ## 貢献について
 
-このリポジトリへの貢献を歓迎します。改善案やバグ報告は、Issueを作成するか、Pull Requestを送信してください。
+このリポジトリへの貢献を歓迎します。改善案やバグ報告は、Issue を作成するか、Pull Request を送信してください。
