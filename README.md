@@ -14,12 +14,17 @@
 
 ### 0. 環境セットアップ（所要 5 分）
 
-[GitHub Desktop](https://desktop.github.com/) | [VS Code](https://code.visualstudio.com/) | [Pandoc](https://pandoc.org/installing.html) |
+Docker + DevContainer を使った簡単セットアップ方法：
 
-> ¹ 各ソフトウェアは公式サイトからダウンロードしてインストールしてください。
-> ² インストール後、アプリケーションを再起動する必要がある場合があります。
+1. [VS Code](https://code.visualstudio.com/) をインストール
+2. VS Code で「Dev Containers」拡張機能をインストール
+   - 拡張機能タブ（左側バー）→「Dev Containers」で検索 → インストール
+3. [Docker Desktop](https://www.docker.com/products/docker-desktop/) をインストール
+   - インストール後、起動しておく
+4. このリポジトリをクローン後、VS Code で開く
+5. 画面左下の「><」アイコンをクリック →「Reopen in Container」を選択
 
-詳細な環境セットアップ手順は[環境セットアップガイド](docs/00_environment_setup.md)を参照してください。
+これだけで完了！Pandoc、LaTeX など必要なツールが全て自動的にインストールされます。
 
 ---
 
@@ -87,7 +92,6 @@ Git を入れられない場合は次のボタンから GitHub Codespaces を起
 ```
 writing_with_ai/
 ├── docs/                # 読むだけで理解できる学習ガイド
-│   ├── 00_environment_setup.md # 環境セットアップガイド
 │   ├── 01_overview.md   # サイトマップ & 学習ルート
 │   ├── 02_markdown.md   # Markdown 超入門
 │   ├── 03_ai_workflow.md # AIを活用した執筆ワークフロー
@@ -162,30 +166,29 @@ VS Code では以下のタスクが利用可能です：
 
 ## 🙋‍♂️ よくある質問
 
-### Pandoc のインストール方法は？
+### DevContainer が起動しません
 
-- **Windows**: [Pandoc ダウンロードページ](https://pandoc.org/installing.html)からインストーラー(.msi)をダウンロードして実行
-- **macOS**: [Pandoc ダウンロードページ](https://pandoc.org/installing.html)からパッケージ(.pkg)をダウンロードして実行
-- **Ubuntu**: [Pandoc ダウンロードページ](https://pandoc.org/installing.html)から deb パッケージをダウンロードして、ソフトウェアセンターでインストール
+以下を確認してください：
+
+- Docker Desktop が起動しているか
+- VS Code の「Dev Containers」拡張機能がインストールされているか
+- 十分なディスク容量があるか（最低 10GB 以上の空き容量を推奨）
 
 ### 引用文献が正しく処理されません
 
 以下を確認してください：
 
 1. YAML フロントマターに`bibliography`と`csl`が正しく設定されているか
-2. Pandoc コマンドに`--citeproc`オプションが指定されているか
+2. 参考文献ファイル（`.bib`）が Markdown ファイルと同じディレクトリにあるか
 
 VS Code では、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプション付きでビルドが実行されます。
 
-### VS Code の推奨拡張機能は？
+### DevContainer の利点は？
 
-- Markdown All in One
-- markdownlint
-- Pandoc Citer
-- GitHub Copilot
-- GitHub Copilot Chat
-
-詳細は[VS Code のインストール方法](docs/00_environment_setup.md#vs-codeの拡張機能)を参照してください。
+- **環境構築が簡単**：Pandoc、LaTeX、各種ツールが自動インストール
+- **環境の一貫性**：全員が同じ環境で作業できるため「動かない」問題が発生しにくい
+- **VS Code 拡張の自動設定**：Markdown 編集に便利な拡張機能が自動的にインストール
+- **複数 OS 対応**：Windows、Mac、Linux で同じ環境が利用可能
 
 ## 貢献について
 
