@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-docx",
+            "type": "shell",
+            "command": "pandoc ${file} --citeproc -o ${fileDirname}/${fileBasenameNoExtension}.docx",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "lint-md",
+            "type": "shell",
+            "command": "npx markdownlint ${file}",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "spell-check",
+            "type": "shell",
+            "command": "npx cspell ${file}",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
