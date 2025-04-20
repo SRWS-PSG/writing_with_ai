@@ -36,30 +36,32 @@
 
 ---
 
-### 2. テンプレートを複製（30 秒）
+### 2. テンプレートを確認（30 秒）
 
-1. Ctrl + Shift + P → Templates: New Paper
+1. VS Code のファイルエクスプローラーで `templates` フォルダを開く
 
-2. フォーマットを選択（例：IMRaD）
+2. テンプレートファイル（例：[`paper_template.md`](templates/paper_template.md)または[`results_first_template.md`](templates/results_first_template.md)）をクリックして開く
 
-3. paper.md が作成される
+3. 「ファイル」→「名前を付けて保存」で `paper.md` として保存
+   > テンプレートを上書きしないため
 
 ---
 
 ### 3. Word ファイルを生成（30 秒）
 
-1. Ctrl + Shift + B
+1. Markdown ファイル（paper.md）を開いた状態で Ctrl + Shift + B を押す
+2. ビルドタスク「build-docx」が自動的に実行される
+   （タスク一覧が表示された場合は「build-docx」を選択）
 
-2. タスク一覧から Generate Word (Pandoc) を選択
-
-3. out/paper.docx に出力されれば成功！
+3. 保存したファイルと同じフォルダに paper.docx が生成されれば成功！
 
 ---
 
-### 5. よくあるエラー & 対処
+### 4. よくあるエラー & 対処
 
 - **ビルドエラー**: VS Code のターミナルでエラーメッセージを確認し、必要なパッケージをインストールしてください
-- **テンプレート選択エラー**: 手動で templates フォルダからテンプレートをコピーして使用することもできます
+- **引用文献エラー**: Pandoc 3.x を使用している場合は、`--citeproc` オプションが必要です（VS Code のビルドタスクには既に含まれています）
+- **ファイルが見つからないエラー**: 参考文献ファイル（`.bib`）が Markdown ファイルと同じディレクトリにあることを確認してください
 
 ---
 

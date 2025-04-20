@@ -3,6 +3,9 @@ FROM mcr.microsoft.com/devcontainers/universal:2
 # 非対話モードでのデバッグ情報を抑制
 ENV DEBIAN_FRONTEND=noninteractive
 
+# git-lfsリポジトリを無効化して問題を回避
+RUN rm -f /etc/apt/sources.list.d/github_git-lfs.list || true
+
 # パッケージリストを更新し、必要なパッケージをインストール
 RUN apt-get update && apt-get install -y --no-install-recommends \
     pandoc \
@@ -22,7 +25,8 @@ RUN npm install -g \
     markdown-spellcheck
 
 # 日本語フォントのインストール
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN rm -f /etc/apt/sources.list.d/github_git-lfs.list || true && \
+    apt-get update && apt-get install -y --no-install-recommends \
     fonts-ipafont \
     fonts-ipaexfont \
     && apt-get clean \
