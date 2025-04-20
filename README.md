@@ -4,35 +4,108 @@
 
 このリポジトリは、英語論文を書くことが苦手な医療者が、AIツール（GitHub CopilotやClaude）とテンプレートを活用して、効率的に臨床医学論文を執筆できるようにすることを目的としています。
 
-## 🚀 クイックスタート (10分)
+## :beginner: Quick Start – まず 10 分で書き始める
 
-1. **VS Codeを起動**
-   - デスクトップまたはスタートメニューからVS Codeを起動
-   - 「File」→「Open Folder」を選択
-   - 論文を保存したいフォルダを選択または新規作成
+> **対象:**  
+> *英語論文執筆に不慣れな臨床医* が **Git 未経験でも** 最速でテンプレ → Word 出力まで完了させる手順です。  
+> VS Code + Dev Container を利用するため、Pandoc などの依存は自動で揃います。
 
-2. **テンプレートを取得**
-   - 「File」→「New File」を選択し、新しいファイルを作成
-   - [templates/results_first_template.md](https://github.com/SRWS-PSG/writing_with_ai/blob/main/templates/results_first_template.md)の内容をコピー
-   - 新しいファイルに貼り付けて「Save」（例: `my_paper.md`として保存）
+---
 
-3. **論文を編集**
-   - テンプレートの指示に従って内容を編集
-   - GitHub Copilotが有効な場合は、AIの提案を活用
+### 0. 環境セットアップ（所要 5 分）
 
-4. **ビルド実行**
-   - `Ctrl+Shift+B`でビルドタスクを実行
-   - 同じフォルダに生成されたdocxファイルを確認
+| OS | Git | VS Code | Docker Desktop¹ |
+|----|-----|---------|-----------------|
+| **Windows** | `winget install --id Git.Git -e` | `winget install --id Microsoft.VisualStudioCode -e` | [Download](https://www.docker.com/products/docker-desktop/) |
+| **macOS** | `brew install git` | `brew install --cask visual-studio-code` | 同上 |
+| **Ubuntu** | `sudo apt install git` | `sudo snap install code --classic` | `sudo apt install docker.io docker-compose` |
+
+> ¹ **Dev Container** を使わない場合は Docker 不要ですが、入れておくと依存解決がワンクリックになります。  
+> ² PATH が反映されない場合は再ログインしてください。
+
+詳細な環境セットアップ手順は[環境セットアップガイド](docs/00_environment_setup.md)を参照してください。
+
+---
+
+### 1. レポジトリを取得（1 分）
+
+```bash
+git clone https://github.com/SRWS-PSG/writing_with_ai.git
+cd writing_with_ai
+```
+
+> Git が使えない PC では
+> 1. GitHub → 「🡇 Code」→ Download ZIP をクリック
+> 2. ZIP を展開してフォルダを開く
+
+---
+
+### 2. VS Code で開く（1 分）
+
+```bash
+code .
+```
+
+画面右下のポップアップで "Reopen in Container" をクリック  
+（.devcontainer が自動で Pandoc・LaTeX・Node などをインストール）
+
+---
+
+### 3. テンプレートを複製（30 秒）
+
+1. Ctrl + Shift + P → Templates: New Paper
+
+2. フォーマットを選択（例：IMRaD）
+
+3. paper.md が作成される
+
+---
+
+### 4. Word ファイルを生成（30 秒）
+
+1. Ctrl + Shift + B
+
+2. タスク一覧から Generate Word (Pandoc) を選択
+
+3. out/paper.docx に出力されれば成功！
+
+---
+
+### 5. よくあるエラー & 対処
+
+- **依存関係エラー**: Dev Container または Codespaces を使用すると自動的に解決されます
+- **ビルドエラー**: VS Code のターミナルでエラーメッセージを確認し、必要なパッケージをインストールしてください
+- **テンプレート選択エラー**: 手動で templates フォルダからテンプレートをコピーして使用することもできます
+
+---
+
+### Codespaces / ブラウザだけで始める
+
+Git & Docker を入れられない場合は次のボタンから GitHub Codespaces を起動すれば、ブラウザだけで上記 2‑4 章が実行できます。
+
+[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=SRWS-PSG/writing_with_ai)
+
+---
+
+### 次に読む
+
+- [docs/01_overview.md](docs/01_overview.md) – リポジトリ概要とガイド
+- [docs/02_markdown.md](docs/02_markdown.md) – 医学論文向け Markdown の書き方
+- [docs/03_ai_workflow.md](docs/03_ai_workflow.md) – Copilot・Cline を使った AI 改稿フロー
+- [docs/04_git_gov.md](docs/04_git_gov.md) – 共同執筆のための Git 運用とガバナンス
+
+> 質問や不具合は Issues へどうぞ。Happy writing!
 
 ## 🗺️ リポジトリマップ
 
 ```
 writing_with_ai/
 ├── docs/                # 読むだけで理解できる学習ガイド
-│   ├── 00_overview.md   # サイトマップ & 学習ルート
-│   ├── 01_markdown.md   # Markdown 超入門
-│   ├── 02_ai_workflow.md # AIを活用した執筆ワークフロー
-│   ├── 03_git_gov.md    # ブランチ/PR 運用 & CODEOWNERS
+│   ├── 00_environment_setup.md # 環境セットアップガイド
+│   ├── 01_overview.md   # サイトマップ & 学習ルート
+│   ├── 02_markdown.md   # Markdown 超入門
+│   ├── 03_ai_workflow.md # AIを活用した執筆ワークフロー
+│   ├── 04_git_gov.md    # ブランチ/PR 運用 & CODEOWNERS
 │   └── _assets/         # 画像・動画
 ├── templates/           # そのままコピーして使う雛形
 │   ├── imrad_full.md    # IMRaD形式の論文テンプレート
@@ -49,18 +122,10 @@ writing_with_ai/
 ├── resources/           # 各種リソース
 │   ├── csl/             # 引用スタイル
 │   └── prompts/         # AIプロンプトライブラリ
+├── .devcontainer/       # Dev Container設定
+│   └── devcontainer.json # 開発環境の自動セットアップ
 └── README.md            # はじめに + 最短10分で動かす手順
 ```
-
-## 📚 ステップバイステップガイド
-
-詳細な使い方は以下のドキュメントを参照してください：
-
-1. [環境セットアップガイド](docs/00_environment_setup.md)
-2. [リポジトリ概要とガイド](docs/01_overview.md)
-3. [Markdown基礎](docs/02_markdown.md)
-4. [AIを活用した執筆ワークフロー](docs/03_ai_workflow.md)
-5. [Gitとガバナンス](docs/04_git_gov.md)
 
 ## 🤖 AIワークフロー チートシート
 
@@ -89,7 +154,7 @@ graph LR
 - **結果セクション**: [stats2sentence.prompt](resources/prompts/stats2sentence.prompt)を使用
 - **文章洗練**: [refinement.prompt](resources/prompts/refinement.prompt)を使用
 
-詳細は[AIを活用した執筆ワークフロー](docs/02_ai_workflow.md)を参照してください。
+詳細は[AIを活用した執筆ワークフロー](docs/03_ai_workflow.md)を参照してください。
 
 ## 🛠️ ビルド & チェック機能
 
@@ -105,29 +170,30 @@ VS Codeでは以下のタスクが利用可能です：
   2. `Tasks: Run Task`と入力
   3. `spell-check`を選択 - スペルチェック
 
-複数のファイルを一括処理する場合は、VS Codeのエクスプローラービューで各ファイルを開いて処理するか、サポートが必要な場合は[Gitとガバナンス](docs/03_git_gov.md)を参照してください。
+複数のファイルを一括処理する場合は、VS Codeのエクスプローラービューで各ファイルを開いて処理するか、サポートが必要な場合は[Gitとガバナンス](docs/04_git_gov.md)を参照してください。
 
-## 🙋‍♂️ FAQ
+## 🙋‍♂️ よくある質問
+
+### Dev Containerが動作しません
+
+以下を確認してください：
+1. Docker Desktopが正しくインストールされ、実行されているか
+2. VS Codeの「Remote - Containers」拡張機能がインストールされているか
+3. VS Codeを再起動してみる
 
 ### Pandocのインストール方法は？
 
-**Windows**:
-1. [Pandocダウンロードページ](https://pandoc.org/installing.html)にアクセス
-2. Windowsインストーラー(.msi)をダウンロード
-3. ダウンロードしたファイルをダブルクリックして指示に従いインストール
+**Dev Containerを使用する場合**:
+- 自動的にインストールされるため、手動インストールは不要です
 
-**macOS**:
-1. [Pandocダウンロードページ](https://pandoc.org/installing.html)にアクセス
-2. macOSパッケージ(.pkg)をダウンロード
-3. ダウンロードしたファイルをダブルクリックして指示に従いインストール
-
-**または**:
-- Homebrewがインストールされている場合は、「Homebrew」アプリから検索してインストール
+**手動インストールの場合**:
+- **Windows**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からインストーラー(.msi)をダウンロードして実行
+- **macOS**: [Pandocダウンロードページ](https://pandoc.org/installing.html)からパッケージ(.pkg)をダウンロードして実行、またはHomebrewで`brew install pandoc`
+- **Ubuntu**: `sudo apt install pandoc`
 
 ### 引用文献が正しく処理されません
 
 以下を確認してください：
-
 1. YAMLフロントマターに`bibliography`と`csl`が正しく設定されているか
 2. Pandocコマンドに`--citeproc`オプションが指定されているか
 
@@ -140,8 +206,9 @@ VS Codeでは、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプ�
 - Pandoc Citer
 - GitHub Copilot
 - GitHub Copilot Chat
+- Remote - Containers（Dev Container使用時）
 
-詳細は[VS Codeのインストール方法](docs/vs_code_installation.md)を参照してください。
+詳細は[VS Codeのインストール方法](docs/00_environment_setup.md#vs-codeの拡張機能)を参照してください。
 
 ## 貢献について
 
