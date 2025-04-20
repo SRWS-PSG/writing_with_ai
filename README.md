@@ -1,10 +1,70 @@
-# 論文執筆支援リポジトリ (Academic Writing Support Repository)
+# writing_with_ai
 
-このリポジトリは、AIを活用した論文執筆をサポートするためのリソースを提供します。初学者でも簡単に論文執筆を始められるよう、必要なツールのインストール方法や使い方を解説しています。
+> 医療者向け「AI × Markdown × GitHub」で英語論文を書くスターターキット
 
-## AIを活用した論文執筆ワークフロー：結果から投稿への道のり
+このリポジトリは、英語論文を書くことが苦手な医療者が、AIツール（GitHub CopilotやClaude）とテンプレートを活用して、効率的に臨床医学論文を執筆できるようにすることを目的としています。
 
-以下は、「結果から投稿への道のり」アプローチに基づいた、AIツール（GitHub CopilotやClaude）を活用した論文執筆の基本的なワークフローです：
+## 🚀 クイックスタート (10分)
+
+1. **リポジトリをクローン**
+   ```bash
+   git clone https://github.com/SRWS-PSG/writing_with_ai.git
+   cd writing_with_ai
+   ```
+
+2. **テンプレートを選択**
+   - `templates/`ディレクトリから適切なテンプレートをコピー
+   - 例: `cp templates/results_first_template.md my_paper.md`
+
+3. **VS Codeで開く**
+   ```bash
+   code my_paper.md
+   ```
+
+4. **ビルド実行**
+   - `Ctrl+Shift+B`でビルドタスクを実行
+   - 生成されたdocxファイルを確認
+
+## 🗺️ リポジトリマップ
+
+```
+writing_with_ai/
+├── docs/                # 読むだけで理解できる学習ガイド
+│   ├── 00_overview.md   # サイトマップ & 学習ルート
+│   ├── 01_markdown.md   # Markdown 超入門
+│   ├── 02_ai_workflow.md # AIを活用した執筆ワークフロー
+│   ├── 03_git_gov.md    # ブランチ/PR 運用 & CODEOWNERS
+│   └── _assets/         # 画像・動画
+├── templates/           # そのままコピーして使う雛形
+│   ├── imrad_full.md    # IMRaD形式の論文テンプレート
+│   ├── results_first_template.md # 結果から投稿への道のりテンプレート
+│   └── letter_to_editor.md # 編集者への手紙テンプレート
+├── scripts/             # 補助スクリプト
+│   └── build.sh         # ビルドスクリプト
+├── .vscode/             # VS Code設定
+│   ├── tasks.json       # ビルド・リント・スペルチェックタスク
+│   └── copilot-chat.json # Copilotチャットスニペット
+├── .github/             # GitHub関連設定
+│   ├── workflows/       # CI/CDワークフロー
+│   └── PULL_REQUEST_TEMPLATE.md # PRテンプレート
+├── resources/           # 各種リソース
+│   ├── csl/             # 引用スタイル
+│   └── prompts/         # AIプロンプトライブラリ
+└── README.md            # はじめに + 最短10分で動かす手順
+```
+
+## 📚 ステップバイステップガイド
+
+詳細な使い方は以下のドキュメントを参照してください：
+
+1. [リポジトリ概要とガイド](docs/00_overview.md)
+2. [Markdown基礎](docs/01_markdown.md)
+3. [AIを活用した執筆ワークフロー](docs/02_ai_workflow.md)
+4. [Gitとガバナンス](docs/03_git_gov.md)
+
+## 🤖 AIワークフロー チートシート
+
+「結果から投稿への道のり」アプローチに基づいた執筆ワークフロー：
 
 ```mermaid
 graph LR
@@ -25,56 +85,65 @@ graph LR
 ```
 
 各ステップでのAIツール活用ポイント：
-- **結果の整理**: [section_outline.prompt](resources/prompts/section_outline.prompt)を使用してボトムラインメッセージと論文の骨子を生成
-- **結果セクション**: [stats2sentence.prompt](resources/prompts/stats2sentence.prompt)を使用して統計結果を英文に変換
-- **方法・考察・背景**: GitHub Copilotを使用して各セクションの文章を生成・補完
-- **文章洗練**: [refinement.prompt](resources/prompts/refinement.prompt)を使用して医学雑誌スタイルに調整
+- **結果の整理**: [section_outline.prompt](resources/prompts/section_outline.prompt)を使用
+- **結果セクション**: [stats2sentence.prompt](resources/prompts/stats2sentence.prompt)を使用
+- **文章洗練**: [refinement.prompt](resources/prompts/refinement.prompt)を使用
 
-このワークフローは[結果から投稿への道のりテンプレート](templates/results_first_template.md)に基づいています。従来のIMRaD形式とは異なり、結果から執筆を始めることで、最小限のエフォートで効率的に論文を完成させることができます。
+詳細は[AIを活用した執筆ワークフロー](docs/02_ai_workflow.md)を参照してください。
 
-## 目次
+## 🛠️ ビルド & リントコマンド
 
-1. [VS Codeのインストール方法](docs/vs_code_installation.md)
-2. [BibTeXとPandocを使った引用管理ガイド](docs/citation_management.md)
-3. [論文執筆のテンプレート](templates/)
-4. [参考資料](resources/)
-5. [トラブルシューティング](#トラブルシューティング)
+VS Codeでは以下のタスクが利用可能です：
 
-## 使い方
+- **ビルド**: `Ctrl+Shift+B` - Markdownファイルをdocxに変換
+- **リント**: `Tasks: Run Task` → `lint-md` - Markdownの文法チェック
+- **スペルチェック**: `Tasks: Run Task` → `spell-check` - スペルチェック
 
-1. このリポジトリをフォークして自分のGitHubアカウントにコピーします
-2. ローカルにクローンして作業を開始します
-3. 各ガイドに従ってツールをセットアップします
-4. テンプレートを使って論文執筆を始めましょう
+コマンドラインからは以下のように実行できます：
 
-## トラブルシューティング
+```bash
+# 単一ファイルのビルド
+./scripts/build.sh your_paper.md
 
-### よくある問題
+# すべてのテンプレートをビルド
+./scripts/build.sh --all
+```
 
-#### 1. 引用処理エラー: `CiteprocParseError: No citation element present`
+## 🙋‍♂️ FAQ
 
-- **原因**: Pandoc 3.x以降で`--citeproc`オプションが欠けている、またはCSLファイルに問題がある
-- **解決策**: 
-  - コマンドに`--citeproc`を追加する
-  - 正しいCSLファイルを使用する
-  - 絶対パスまたは正確な相対パスでファイルを指定する
+### Pandocのインストール方法は？
 
-#### 2. Wordファイルへの変換が失敗する
+```bash
+# Ubuntuの場合
+sudo apt-get install pandoc
 
-- **原因**: 出力ファイルが他のアプリケーションで開かれている
-- **解決策**: 
-  - Wordを閉じてから変換を実行する
-  - 別のファイル名を指定する（例: `paper_new.docx`）
+# macOSの場合
+brew install pandoc
 
-#### 3. 引用が正しく表示されない
+# Windowsの場合
+choco install pandoc
+```
 
-- **原因**: YAMLフロントマターの設定が正しくない、または引用記法に誤りがある
-- **解決策**:
-  - YAMLフロントマターの形式を確認する（`---`で囲む）
-  - 正しい引用記法を使用する（例: `[@citation_key]`）
-  - Pandocコマンドに`--bibliography`と`--csl`オプションを明示的に指定する
+### 引用文献が正しく処理されません
 
-詳細なトラブルシューティングについては[BibTeXとPandocを使った引用管理ガイド](docs/citation_management.md)のトラブルシューティングセクションを参照してください。
+以下を確認してください：
+
+1. YAMLフロントマターに`bibliography`と`csl`が正しく設定されているか
+2. Pandocコマンドに`--citeproc`オプションが指定されているか
+
+```bash
+pandoc paper.md --citeproc -o paper.docx
+```
+
+### VS Codeの推奨拡張機能は？
+
+- Markdown All in One
+- markdownlint
+- Pandoc Citer
+- GitHub Copilot
+- GitHub Copilot Chat
+
+詳細は[VS Codeのインストール方法](docs/vs_code_installation.md)を参照してください。
 
 ## 貢献について
 
