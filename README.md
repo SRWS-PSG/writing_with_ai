@@ -8,7 +8,7 @@
 
 > **対象:**  
 > _英語論文執筆に不慣れな臨床医_ が **Git 未経験でも** 最速でテンプレ → Word 出力まで完了させる手順です。  
-> VS Code + Dev Container を利用するため、Pandoc などの依存は自動で揃います。
+> VS Code + Dev Container を利用するため、Pandoc などの依存は自動で設定できます。
 
 ---
 
@@ -21,14 +21,17 @@ Docker + DevContainer を使った簡単セットアップ方法：
    - 拡張機能タブ（左側バー）→「Dev Containers」で検索 → インストール
 3. [Docker Desktop](https://www.docker.com/products/docker-desktop/) をインストール
    - インストール後、起動しておく
-4. このリポジトリをクローン後、VS Code で開く
-5. 画面左下の「><」アイコンをクリック →「Reopen in Container」を選択
-
-これだけで完了！Pandoc、LaTeX など必要なツールが全て自動的にインストールされます。
+4. [GitHub アカウント](https://github.com/)の作成
+   - GitHub 公式サイトにアクセス
+   - 「Sign up」ボタンをクリック
+   - 指示に従ってメールアドレス、パスワード、ユーザー名を入力
+   - アカウント作成後、メール認証を完了
 
 ---
 
 ### 1. レポジトリを取得（1 分）
+
+> リポジトリ（Repository）とは、ファイルやフォルダの集まりで、その変更履歴も含めて保存される場所です。このリポジトリには論文テンプレートやツール、ドキュメントなどが格納されています。
 
 1. VS Code を起動
 2. 左側のアクティビティバーから「ソース管理」アイコン（分岐アイコン）をクリック
@@ -39,11 +42,16 @@ Docker + DevContainer を使った簡単セットアップ方法：
 
 > これで、レポジトリを取得できました。クローンは、クラウド上のレポジトリを自分の PC にコピーすることを指します。
 
+4. クローンしたフォルダを VS Code で開く
+5. 画面左下の「><」アイコンをクリック →「Reopen in Container」を選択
+
+これだけで完了！Pandoc など必要なツールが全て自動的にインストールされます。
+
 ---
 
 ### 2. テンプレートを確認（30 秒）
 
-1. VS Code のファイルエクスプローラーで `templates` フォルダを開く
+1. VS Code のファイルエクスプローラーで [`templates` フォルダ](templates/)を開く
 
 2. テンプレートファイル（例：[`paper_template.md`](templates/paper_template.md)または[`results_first_template.md`](templates/results_first_template.md)）をクリックして開く
 
