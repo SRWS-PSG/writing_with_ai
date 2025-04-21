@@ -224,7 +224,6 @@ flowchart LR
   Exposure["曝露 (薬剤A vs 薬剤B)"] --> Outcome["アウトカム (心血管イベント)"]
   Confounder["交絡因子 (年齢・性別・併存疾患)"] -.-> Exposure
   Confounder -.-> Outcome
-  DB["データベースの特性\n(選択バイアス・測定誤差・欠測)"] -.-> Exposure
   DB -.-> Outcome
 ```
 
