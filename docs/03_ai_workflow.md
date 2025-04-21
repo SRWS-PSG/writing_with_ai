@@ -1,10 +1,10 @@
-# AIを活用した執筆ワークフロー
+# AI を活用した執筆ワークフロー
 
-このガイドでは、「結果から投稿への道のり」アプローチに基づいた、AIツールを活用した論文執筆のワークフローを解説します。
+このガイドでは、「結果から投稿への道のり」アプローチに基づいた、AI ツールを活用した論文執筆のワークフローを解説します。
 
 ## 「結果から投稿への道のり」アプローチ
 
-従来のIMRaD（Introduction, Methods, Results, and Discussion）形式では、論文を序論から順に書き進めることが一般的です。しかし、「結果から投稿への道のり」アプローチでは、結果から執筆を始め、方法、考察、背景、要旨の順に書き進めることで、より効率的に論文を完成させることができます。
+従来の IMRaD（Introduction, Methods, Results, and Discussion）形式では、論文を序論から順に書き進めることが一般的です。しかし、「結果から投稿への道のり」アプローチでは、結果から執筆を始め、方法、考察、背景、要旨の順に書き進めることで、より効率的に論文を完成させることができます。
 
 ```mermaid
 graph LR
@@ -20,11 +20,12 @@ graph LR
 
 ### 1. 結果の整理とボトムラインメッセージの明確化
 
-まず、研究結果を整理し、論文全体を通して伝えたい最も重要なメッセージ（ボトムラインメッセージ）を1-2文で明確にします。
+まず、研究結果を整理し、論文全体を通して伝えたい最も重要なメッセージ（ボトムラインメッセージ）を 1-2 文で明確にします。
 
-**AIツール活用ポイント**:
-- [section_outline.prompt](../resources/prompts/section_outline.prompt)を使用して、ボトムラインメッセージと論文の骨子を生成します。
-- VS Codeで右クリックして「ファイルを開く」から`resources/prompts/section_outline.prompt`を選択し、内容をCopilot Chatに貼り付けて使用できます。
+**AI ツール活用ポイント**:
+
+- [bottomline_message.prompt](../resources/prompts/bottomline_message.prompt)を使用して、ボトムラインメッセージと論文の骨子を生成します。
+- 内容を Copilot Chat でこのプロンプトを開いてから、もしくは Cline に@bottomline_message.prompt で与えて、結果を一緒にコピペすると使用できます。
 
 ### 2. 結果セクションの執筆
 
@@ -35,10 +36,11 @@ graph LR
 - 副次的アウトカムの結果
 - サブグループ解析の結果
 
-**AIツール活用ポイント**:
+**AI ツール活用ポイント**:
+
 - [stats2sentence.prompt](../resources/prompts/stats2sentence.prompt)を使用して、統計結果を適切な英文に変換します。
-- GitHub Copilotを使用して、結果の記述を補完します。
-- VS Codeで`resources/prompts/stats2sentence.prompt`を開き、内容をCopilot Chatに貼り付けて使用できます。
+- GitHub Copilot を使用して、結果の記述を補完します。
+- VS Code で`resources/prompts/stats2sentence.prompt`を開き、内容を Copilot Chat に貼り付けて使用できます。
 
 ### 3. 方法セクションの執筆
 
@@ -51,9 +53,10 @@ graph LR
 - 統計解析の手法
 - 倫理的配慮
 
-**AIツール活用ポイント**:
-- GitHub Copilotの`methods`スニペットを使用して、方法セクションの構造を生成します。
-- Copilot Chatに「この研究デザインに必要な方法セクションの要素は？」と質問します。
+**AI ツール活用ポイント**:
+
+- GitHub Copilot の`methods`スニペットを使用して、方法セクションの構造を生成します。
+- Copilot Chat に「この研究デザインに必要な方法セクションの要素は？」と質問します。
 
 ### 4. 考察セクションの執筆
 
@@ -66,10 +69,11 @@ graph LR
 5. 臨床的意義
 6. 今後の研究課題
 
-**AIツール活用ポイント**:
-- Copilot Chatに「この結果の臨床的意義は？」と質問します。
+**AI ツール活用ポイント**:
+
+- Copilot Chat に「この結果の臨床的意義は？」と質問します。
 - [refinement.prompt](../resources/prompts/refinement.prompt)を使用して、考察の文章を医学雑誌スタイルに調整します。
-- VS Codeで`resources/prompts/refinement.prompt`を開き、内容をCopilot Chatに貼り付けて使用できます。
+- VS Code で`resources/prompts/refinement.prompt`を開き、内容を Copilot Chat に貼り付けて使用できます。
 
 ### 5. 背景（イントロダクション）の執筆
 
@@ -80,9 +84,10 @@ graph LR
 3. 知識のギャップ
 4. 研究の目的と意義
 
-**AIツール活用ポイント**:
-- Copilot Chatに「この研究分野の最新の知見は？」と質問します。
-- GitHub Copilotを使用して、引用文献の記述を補完します。
+**AI ツール活用ポイント**:
+
+- Copilot Chat に「この研究分野の最新の知見は？」と質問します。
+- GitHub Copilot を使用して、引用文献の記述を補完します。
 
 ### 6. 要旨の執筆
 
@@ -93,25 +98,26 @@ graph LR
 - 結果：主要な数値結果
 - 結論：主な知見と意義
 
-**AIツール活用ポイント**:
-- Copilot Chatに「この論文の要旨を250語以内で生成して」と質問します。
+**AI ツール活用ポイント**:
+
+- Copilot Chat に「この論文の要旨を 250 語以内で生成して」と質問します。
 - [refinement.prompt](../resources/prompts/refinement.prompt)を使用して、要旨を洗練させます。
 
 ## Copilot Chat スニペット
 
-VS Codeの`.vscode/copilot-chat.json`には、論文の各セクションを生成するためのスニペットが登録されています。以下のスニペットを使用できます：
+VS Code の`.vscode/copilot-chat.json`には、論文の各セクションを生成するためのスニペットが登録されています。以下のスニペットを使用できます：
 
-- `imrad`: IMRaD論文セクション構造
+- `imrad`: IMRaD 論文セクション構造
 - `methods`: 研究方法セクション
 - `results`: 研究結果セクション
 
-スニペットを使用するには、Copilot Chatで`#`に続けてスニペット名を入力します：
+スニペットを使用するには、Copilot Chat で`#`に続けてスニペット名を入力します：
 
 ```
 #imrad
 ```
 
-## AIツールの効果的な使い方
+## AI ツールの効果的な使い方
 
 ### GitHub Copilot
 
@@ -121,16 +127,16 @@ VS Codeの`.vscode/copilot-chat.json`には、論文の各セクションを生�
 
 ### Claude (Cline)
 
-- **プロンプトファイルの使用**: プロンプトファイルの内容をコピーしてClaudeのWebインターフェースに貼り付けて使用します。
+- **プロンプトファイルの使用**: プロンプトファイルの内容をコピーして Claude の Web インターフェースに貼り付けて使用します。
 - **文章の洗練**: 書いた文章を医学雑誌スタイルに調整します。
 - **引用文献の生成**: 特定のトピックに関する引用文献リストを生成します。
 
 ### 注意点
 
-- AIが生成した内容は必ず確認し、必要に応じて修正してください。
+- AI が生成した内容は必ず確認し、必要に応じて修正してください。
 - 統計結果や引用文献は正確性を確保するために、必ず原典を確認してください。
-- AIツールは補助として使用し、最終的な判断は著者が行ってください。
+- AI ツールは補助として使用し、最終的な判断は著者が行ってください。
 
 ## 次のステップ
 
-AIを活用した執筆ワークフローを理解したら、次は[Gitとガバナンス](03_git_gov.md)に進み、共同執筆のためのGit運用とガバナンスについて学びましょう。
+AI を活用した執筆ワークフローを理解したら、次は[Git とガバナンス](03_git_gov.md)に進み、共同執筆のための Git 運用とガバナンスについて学びましょう。
