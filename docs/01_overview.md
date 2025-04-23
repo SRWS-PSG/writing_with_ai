@@ -45,9 +45,10 @@ writing_with_ai/
 ## 始め方
 
 1. このリポジトリをクローンまたはフォークする
-2. `templates/` ディレクトリから適切なテンプレートを選択してコピーする
-3. VS Codeで開き、`Ctrl+Shift+B`でビルドタスクを実行する
-4. 生成されたdocxファイルを確認する
+> このリポジトリは公開の設定になっているので、フォークした場合（自分のレポジトリにコピー）は公開の設定になります。機微な情報を扱いたい場合は、[こちらの方法](https://github.com/SRWS-PSG/writing_with_ai/edit/devin/1744771887-add-writing-guides/docs/01_overview.md)でプライベートレポジトリを作成してください。
+3. `templates/` ディレクトリから適切なテンプレートを選択してコピーする
+4. VS Codeで開き、`Ctrl+Shift+B`でビルドタスクを実行する
+5. 生成されたdocxファイルを確認する
 
 詳細な手順は[README.md](../README.md)を参照してください。
 
