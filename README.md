@@ -198,6 +198,12 @@ VS Code では、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプ�
 - **VS Code 拡張の自動設定**：Markdown 編集に便利な拡張機能が自動的にインストール
 - **複数 OS 対応**：Windows、Mac、Linux で同じ環境が利用可能
 
+### 論文なのでprivateレポジトリで編集したい
+
+方法 | 手順の概要 | 備考
+GitHub Importer で新規リポジトリとして取り込む | 1. https://github.com/new/import へアクセス2. フォーク元の URL を入力3. Privacy を Private に設定してインポート | インポートしたリポジトリは元リポジトリとの「フォーク関係」がなく、プルリクエストのやり取りは自動では行えません。
+ローカルで clone → 新規プライベートリポジトリに push | 1. git clone でローカルに取得2. GitHub で空のプライベートリポジトリを作成3. git remote set-url origin <新リポジトリURL>4. git push -u origin main | 完全に独立したコピーになります。
+
 ## 貢献について
 
 このリポジトリへの貢献を歓迎します。改善案やバグ報告は、Issue を作成するか、Pull Request を送信してください。
