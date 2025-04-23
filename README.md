@@ -1,6 +1,5 @@
 # writing_with_ai
-
-> 医療者向け「AI × Markdown × GitHub」で英語論文を書くスターターキット
+医療者向け「AI × Markdown × GitHub」で英語論文を書くスターターキット
 このリポジトリは、英語論文を書くことが苦手な医療者が、AI ツール（GitHub Copilot や Claude）とテンプレートを活用して、効率的に臨床医学論文を執筆できるようにすることを目的としています。
 
 ## :beginner: Quick Start – まず 10 分で書き始める
