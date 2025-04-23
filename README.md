@@ -84,6 +84,7 @@ Git を入れられない場合は次のボタンから GitHub Codespaces を起
 
 [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/SRWS-PSG/writing_with_ai)
 
+> クリックすると、課金についての説明が出ます。デフォルトのマシンだと、[月60時間までは無料](https://docs.github.com/ja/get-started/learning-about-github/githubs-plans)で使えるので、試すだけなら問題ないです。
 ---
 
 ### 次に読む
