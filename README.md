@@ -2,6 +2,8 @@
 
 > 医療者向け「AI × Markdown × GitHub」で英語論文を書くスターターキット
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&repo=SRWS-PSG%2Fwriting_with_ai)
+
 このリポジトリは、英語論文を書くことが苦手な医療者が、AI ツール（GitHub Copilot や Claude）とテンプレートを活用して、効率的に臨床医学論文を執筆できるようにすることを目的としています。
 
 ## :beginner: Quick Start – まず 10 分で書き始める
@@ -53,7 +55,9 @@ Docker + DevContainer を使った簡単セットアップ方法：
 
 1. VS Code のファイルエクスプローラーで [`templates` フォルダ](templates/)を開く
 
-2. テンプレートファイル（例：[`paper_template.md`](templates/paper_template.md)または[`results_first_template.md`](templates/results_first_template.md)）をクリックして開く
+2. テンプレートファイル（例：[`imrad_full.md`](templates/imrad_full.md)または[`results_first_template.md`](templates/results_first_template.md)）をクリックして開く
+
+   > 詳しい Git の使い方については [Git 基本ガイド](docs/00_git_basics.md) を参照してください
 
 3. 「ファイル」→「名前を付けて保存」で `paper.md` として保存
    > テンプレートを上書きしないため
