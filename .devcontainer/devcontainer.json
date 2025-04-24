@@ -1,13 +1,18 @@
+
 {
   "name": "Writing with AI Environment",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "build": { "dockerfile": "Dockerfile" },
+
   "features": {
+    // Node LTS を追加する設定（そのままで OK）
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts"
     }
   },
+
+  // "remoteUser": "codespace",
+  "remoteUser": "vscode",
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -28,7 +33,7 @@
       }
     }
   },
-  "postCreateCommand": "echo 'Development environment setup complete!' && pandoc --version",
-  "remoteUser": "codespace",
-  "waitFor": "postCreateCommand"
+
+  "postCreateCommand": "echo 'Development environment setup complete!' && pandoc --version"
+
 }
