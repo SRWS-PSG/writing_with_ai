@@ -27,7 +27,7 @@ All authors contributed to the development of the selection criteria, the risk o
 
 ## 1. Introduction
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    背景を対話で指導してくれるGPTs
    https://chatgpt.com/g/g-YF7pcAKdG-background-editor
 
@@ -42,7 +42,7 @@ All authors contributed to the development of the selection criteria, the risk o
 
 ## 2. Research question
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    01_03 臨床疑問の構造化
    https://www.facebook.com/groups/339218557733680/permalink/339349757720560/
    03_03 先行レビューの検索
@@ -69,12 +69,12 @@ We used a systematic review protocol template.[@ProtocolTemplate2025] We followe
 
 #### 3.2.1 Type of studies
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_05 組み入れ・除外基準
    https://www.facebook.com/groups/339218557733680/permalink/345690497086486/
    [ ] done -->
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_16	OSFでのSRプロトコル登録 (プロトコルが完成してから見ること)
    https://www.facebook.com/groups/339218557733680/permalink/345767720412097/
    [ ] done -->
@@ -141,7 +141,7 @@ We will exclude <!-- specify any exclusion criteria -->. We will not exclude stu
 
 ### 3.4 Search method
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_06 PubMedの検索式その1
    https://www.facebook.com/groups/339218557733680/permalink/345691060419763/
    03_07 PubMedの検索式その2
@@ -189,7 +189,7 @@ The form will include the information on study design, study population, interve
 
 ### 3.6 Assessment of risk of bias in included studies
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_09 Risk of bias 2
    https://www.facebook.com/groups/339218557733680/permalink/345693927086143/
    https://www.facebook.com/groups/339218557733680/permalink/345696600419209/
@@ -200,7 +200,7 @@ Two reviewers will evaluate the risk of bias independently using the Risk of Bia
 
 ### 3.7 Measures of treatment effects
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_10	メタアナリシス：存在、発生、効果の指標
    https://www.facebook.com/groups/339218557733680/permalink/345697577085778/
    [ ] done -->
@@ -215,7 +215,7 @@ We will summarize adverse events based on the definition by the original article
 
 ### 3.8 Unit of analysis issues
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_05	組入・除外基準
    https://www.facebook.com/groups/339218557733680/permalink/345690497086486/
    03_10	メタアナリシス：存在、発生、効果の指標
@@ -231,7 +231,7 @@ We will summarize adverse events based on the definition by the original article
 
 ### 3.9 Dealing with missing data
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_12	質的統合層別_感度分析の検討欠測への対処
    https://www.facebook.com/groups/339218557733680/permalink/345698817085654/
    https://www.facebook.com/groups/339218557733680/permalink/345756053746597/
@@ -243,7 +243,7 @@ For continuous outcomes, we will use the data from the available case analysis. 
 
 ### 3.10 Assessment of heterogeneity
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_11	メタアナリシス：異質性と出版バイアス
    https://www.facebook.com/groups/339218557733680/permalink/345698470419022/
    [ ] done -->
@@ -265,7 +265,7 @@ We will use a random-effects model for meta-analysis, as we expect clinical hete
 
 ### 3.13 Subgroup analysis and investigation of heterogeneity
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_12	質的統合層別_感度分析の検討欠測への対処
    https://www.facebook.com/groups/339218557733680/permalink/345698817085654/
    https://www.facebook.com/groups/339218557733680/permalink/345756053746597/
@@ -288,7 +288,7 @@ We will perform the following sensitivity analyses to assess the robustness of o
 
 ### 3.15 Summary of findings table
 
-<!-- training
+<!-- DO NOT MODIFY THIS COMMENT BLOCK
    03_13	SoF GRADE PROSPERO登録 PRISMA
    https://www.facebook.com/groups/339218557733680/permalink/345759547079581/
    https://www.facebook.com/groups/339218557733680/permalink/345763087079227/
