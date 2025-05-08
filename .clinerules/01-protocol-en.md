@@ -25,6 +25,9 @@ description: |
 この順序は論文の構造とは異なりますが、研究設計の効率的な構築のために SRWS-PSG によって推奨されています。
 各セクションは MECIR 基準を満たした時点で完了としてマークし、すべて完了後に DOCX へエクスポートします。
 
+重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
+
 steps:
 
 # STEP 1 — Research question
@@ -38,6 +41,8 @@ steps:
   Considers relevance to specific populations and equity where appropriate (C4);
 
   Defines in advance outcomes critical to the review, including potential benefits and harms, and any additional important outcomes (O) (C3, C14, C15).
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 # STEP 2 — Method
 
@@ -51,6 +56,8 @@ steps:
   Justifies the choice of eligible study designs, especially if including non-randomized studies or restricting to certain designs (C11);
   Clarifies if specific outcomes are used as criteria for including studies (C8);
   Defines in advance how studies that include only a subset of relevant participants will be addressed (C6).
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 - id: method_search
   file: your_docs/review_protocol_draft.md
@@ -59,6 +66,8 @@ steps:
   Plans in advance methods for identifying studies, including databases to be searched, key search terms, and other sources;
   Designs searches to capture as many eligible studies as possible, covering relevant time periods;
   Ensures searches are not restricted by language or publication status unless explicitly justified (C12, C19).
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 - id: method_bias
   file: your_docs/review_protocol_draft.md
@@ -67,6 +76,8 @@ steps:
   Plans in advance the methods for assessing risk of bias in included studies, including the specific tool(s) to be used (e.g., Cochrane 'Risk of Bias' tool for RCTs);
   Describes how the tool(s) will be implemented and the criteria for assigning judgements (e.g., low, high, unclear risk of bias) (C20);
   Specifies process for resolving disagreements between assessors.
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 - id: method_effects
   file: your_docs/review_protocol_draft.md
@@ -74,24 +85,32 @@ steps:
   criteria: |
   Specifies the choice of effect measure for different types of data (e.g., odds ratio, risk ratio, risk difference for dichotomous outcomes; mean difference, standardized mean difference for continuous outcomes) (C21);
   Identifies methods for data synthesis, including whether a quantitative synthesis (meta-analysis) is planned, and the statistical methods for meta-analysis (e.g., inverse variance or Mantel Haenszel, fixed-effect or random-effects model) (C21).
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 - id: method_analysis_issues
   file: your_docs/review_protocol_draft.md
   section: "### 3.8 Unit of analysis issues"
   criteria: |
   Addresses how unit of analysis issues (e.g., crossover trials, cluster-RCTs, multiple observations for the same outcome) will be handled in the analysis, as part of the pre-specified plan for synthesizing results (related to C21).
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 - id: method_missing_data
   file: your_docs/review_protocol_draft.md
   section: "### 3.9 Dealing with missing data"
   criteria: |
   Describes the planned approach for dealing with missing data for outcomes, as part of the pre-specified plan for synthesizing results (related to C21).
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 - id: method_heterogeneity
   file: your_docs/review_protocol_draft.md
   section: "### 3.10 Assessment of heterogeneity"
   criteria: |
   Explains methods planned for assessing statistical heterogeneity (e.g., visual inspection of forest plots, Chi² test, I² statistic) and criteria for interpreting its extent, as part of the synthesis plan (C21).
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 - id: method_subgroup
   file: your_docs/review_protocol_draft.md
@@ -99,6 +118,8 @@ steps:
   criteria: |
   Predefines any planned subgroup analyses, specifying potential effect modifiers;
   Restricts the number of subgroup analyses and provides a clear rationale for each (C22).
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 - id: method_sof
   file: your_docs/review_protocol_draft.md
@@ -107,6 +128,8 @@ steps:
   Plans in advance the methods for assessing the quality of evidence (e.g., GRADE approach) for the main outcomes (C23);
   Specifies which outcomes (typically up to seven critical or important outcomes for decision making, as defined in C14, C15) will be included in the 'Summary of Findings' table and how they will be presented (C23);
   Defines acceptable outcome measures, selection from multiple measures, and time points of interest for these outcomes if not covered elsewhere (C16, C17, C18).
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 - id: method_complete
   file: your_docs/review_protocol_draft.md
@@ -114,6 +137,8 @@ steps:
   criteria: |
   All method subsections are complete, adhering to MECIR standards, with appropriate detail and rigor.
   Data collection, synthesis plans, and analysis approaches are well-defined and pre-specified.
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 # STEP 3 — Introduction
 
@@ -123,6 +148,8 @@ steps:
   criteria: |
   Provides background on the topic, explains the rationale for the review, and justifies its necessity by identifying gaps or uncertainties in existing evidence, thereby relating to the importance for review users (related to C1, C2);
   May cite prior relevant studies or reviews.
+  重要：テンプレート内のユーザー資料 HTML コメント（\<!-- training --> で囲まれたテキスト）はユーザーへの重要な参考資料です。 これらのコメントは削除せず、必ず保持してください。
+  インタラクティブモード： - 各セクションを記入する前に、ユーザーに選択肢や方向性を提示してください - 完全な回答を自動生成せず、ユーザーの指示や選択に基づいて進めてください - ユーザーが特定のアプローチや内容を選択できるようにしてください - 提案を示した後、ユーザーの承認を得てから実際の内容を作成してください
 
 modes:
 default: plan # Cline starts in Plan mode
