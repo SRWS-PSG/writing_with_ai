@@ -34,11 +34,20 @@ All authors contributed to the development of the selection criteria, the risk o
    03_14 背景の書き方
    https://www.facebook.com/groups/339218557733680/permalink/345764713745731/
 
+   03_14_1 パラグラフ・ライティング
+   https://www.facebook.com/groups/339218557733680/permalink/345765403745662/
    - 分かっていること
    - 分かっていないこと (PIOのどれが新しい？先行研究の不一致？)
--->
+   [ ] done -->
 
 ## 2. Research question
+
+<!--
+   01_03 臨床疑問の構造化
+   https://www.facebook.com/groups/339218557733680/permalink/339349757720560/
+   03_03 先行レビューの検索
+   https://www.facebook.com/groups/339218557733680/permalink/345686130420256/
+   [ ] done -->
 
 Using the PICO framework:
 
@@ -59,6 +68,16 @@ We used a systematic review protocol template.[@ProtocolTemplate2025] We followe
 ### 3.2 Inclusion criteria of the articles for the review
 
 #### 3.2.1 Type of studies
+
+<!--
+   03_05 組み入れ・除外基準
+   https://www.facebook.com/groups/339218557733680/permalink/345690497086486/
+   [ ] done -->
+
+<!--
+   03_16	OSFでのSRプロトコル登録 (プロトコルが完成してから見ること)
+   https://www.facebook.com/groups/339218557733680/permalink/345767720412097/
+   [ ] done -->
 
 We will include randomized controlled trials that assess <!--specific interventions-->. We will not apply language or country restrictions. We will include all papers including published, unpublished articles, abstract of conference and letter.
 
@@ -115,11 +134,25 @@ We will exclude <!-- specify any exclusion criteria -->. We will not exclude stu
    - Period: <!-- Specify the time period for measurement -->
 
 3. All adverse events
+
    - Definition: Definition of adverse events are set by original authors.
    - Incidence proportion of all adverse events
    - Period: during follow up period
 
 ### 3.4 Search method
+
+<!--
+   03_06 PubMedの検索式その1
+   https://www.facebook.com/groups/339218557733680/permalink/345691060419763/
+   03_07 PubMedの検索式その2
+   https://www.facebook.com/groups/339218557733680/permalink/345693490419520/
+   https://www.facebook.com/groups/339218557733680/permalink/345693750419494/
+
+   ※最初にプロトコルを書くときは、PubMedの検索式のみでOK
+   03_15 その他のデータベースの検索式
+   https://www.facebook.com/groups/339218557733680/permalink/345765980412271/
+
+   [ ] done -->
 
 #### 3.4.1 Electronic search
 
@@ -140,7 +173,7 @@ We will also search the following databases for ongoing or unpublished trials:
 
 See Appendix 4, 5 for the search strategies.
 
-We will check the reference lists of studies, including international guidelines as well as the reference lists of eligible studies and articles citing eligible studies. We will ask the authors of original studies for unpublished or additional data.
+We will check the reference lists of studies, including international guidelines as well as the reference lists of eligible studies and articles citing eligible studies <!-- 何らかの当該領域の診療ガイドラインを入れる, なければナシでOK -->. We will ask the authors of original studies for unpublished or additional data.
 
 ### 3.5 Data collection and analysis
 
@@ -150,21 +183,31 @@ Two independent reviewers will screen titles and abstracts, followed by the asse
 
 #### 3.5.2 Data extraction and management
 
-Two reviewers will perform independent data extraction of the included studies using standardized data collection form. We will use a pre-checked form using 10 randomly selected studies.
+Two reviewers will perform independent data extraction of the included studies using standardized data collection form. We will use a pre-checked form using 5 randomly selected studies.
 
 The form will include the information on study design, study population, interventions and outcomes. Any disagreements will be resolved by discussion, and if this fails, a third reviewer will act as an arbiter.
 
 ### 3.6 Assessment of risk of bias in included studies
 
-Two reviewers will evaluate the risk of bias independently using the Risk of Bias 2 tool.[@Sterne2019] Disagreements between the two reviewers will be discussed, and if this fails, a third reviewer will be acting as an arbiter, if necessary.
+<!--
+   03_09 Risk of bias 2
+   https://www.facebook.com/groups/339218557733680/permalink/345693927086143/
+   https://www.facebook.com/groups/339218557733680/permalink/345696600419209/
+   ここは書き換えないので、トレーニングが終わればOK
+   [ ] done -->
+
+Two reviewers will evaluate the risk of bias independently using the Risk of Bias 2 tool to evaluate the intention to treat effect.[@Sterne2019] Disagreements between the two reviewers will be discussed, and if this fails, a third reviewer will be acting as an arbiter, if necessary.
 
 ### 3.7 Measures of treatment effects
 
-We will pool the relative risk ratios and the 95% confidence intervals (CIs) for the following binary variables:
-[List binary outcome variables]
+<!--
+   03_10	メタアナリシス：存在、発生、効果の指標
+   https://www.facebook.com/groups/339218557733680/permalink/345697577085778/
+   [ ] done -->
 
-We will pool the mean differences and the 95% CIs for the following continuous variables:
-[List continuous outcome variables]
+We will pool the relative risk ratios and the 95% confidence intervals (CIs) for the following binary variables: <!-- List binary outcome variables -->
+
+We will pool the mean differences and the 95% CIs for the following continuous variables: <!-- List continuous outcome variables -->
 
 If several different scales have been used in the included studies, we will pool the effect estimates using standard mean differences (SMDs).
 
@@ -172,19 +215,38 @@ We will summarize adverse events based on the definition by the original article
 
 ### 3.8 Unit of analysis issues
 
-Clustering at the level of the enrolled units in cluster-randomised studies
+<!--
+   03_05	組入・除外基準
+   https://www.facebook.com/groups/339218557733680/permalink/345690497086486/
+   03_10	メタアナリシス：存在、発生、効果の指標
+   https://www.facebook.com/groups/339218557733680/permalink/345697577085778/
+   https://www.facebook.com/groups/339218557733680/posts/657760859212780/
+   ここはRQごとに異なるので、自分のRQに合わせて書き直すこと
+   [ ] done -->
 
-In dealing with cluster-RCTs, for dichotomous data, we will apply the design effect and calculate effective sample size and number of events using the intracluster correlation coefficient (ICC) among each unit and the average cluster size, as described in Chapter 16.3.5 of the Cochrane Handbook.[@Higgins2019] If the ICC has not been reported, we will use the ICC of a similar study as a substitute.
-
-For continuous data, only the sample size will be reduced; means and standard deviations will remain unchanged.[@Higgins2019]
+- For crossover trials, we will only include data from the first period.
+- For cluster-RCTs, for dichotomous data, we will apply the design effect and calculate effective sample size and number of events using the intracluster correlation coefficient (ICC) among each unit and the average cluster size, as described in Chapter 16.3.5 of the Cochrane Handbook.[@Higgins2019] If the ICC has not been reported, we will use the ICC of a similar study as a substitute.
+- For continuous variables, we will integrate means and standard deviations according to the methods described in the Cochrane Handbook.[@Higgins2019]
+- For interventions with multiple dosages , we will treat doses within the range of 20-50mg/day as the same intervention and conduct subgroup analyses.
 
 ### 3.9 Dealing with missing data
+
+<!--
+   03_12	質的統合層別_感度分析の検討欠測への対処
+   https://www.facebook.com/groups/339218557733680/permalink/345698817085654/
+   https://www.facebook.com/groups/339218557733680/permalink/345756053746597/
+   [ ] done -->
 
 For dichotomous outcomes, we will perform intention-to-treat (ITT) analysis. If there is a discrepancy between the number randomized and the number analyzed, we will use the number randomized as the denominator.
 
 For continuous outcomes, we will use the data from the available case analysis. If standard deviations are not reported, we will calculate them from p-values, confidence intervals, standard errors, or t values;[@Furukawa2006] or request the original data from the trial authors.
 
 ### 3.10 Assessment of heterogeneity
+
+<!--
+   03_11	メタアナリシス：異質性と出版バイアス
+   https://www.facebook.com/groups/339218557733680/permalink/345698470419022/
+   [ ] done -->
 
 We will assess statistical heterogeneity using the Chi² test and the I² statistic. We will consider a Chi² p-value of less than 0.10 as indicating significant statistical heterogeneity. We will interpret the I² statistic as follows:
 
@@ -203,6 +265,12 @@ We will use a random-effects model for meta-analysis, as we expect clinical hete
 
 ### 3.13 Subgroup analysis and investigation of heterogeneity
 
+<!--
+   03_12	質的統合層別_感度分析の検討欠測への対処
+   https://www.facebook.com/groups/339218557733680/permalink/345698817085654/
+   https://www.facebook.com/groups/339218557733680/permalink/345756053746597/
+   [ ] done -->
+
 We will perform the following subgroup analyses:
 
 1. <!-- A vs. B -->
@@ -219,6 +287,13 @@ We will perform the following sensitivity analyses to assess the robustness of o
 4. <!-- Other sensitivity analyses as appropriate -->
 
 ### 3.15 Summary of findings table
+
+<!--
+   03_13	SoF GRADE PROSPERO登録 PRISMA
+   https://www.facebook.com/groups/339218557733680/permalink/345759547079581/
+   https://www.facebook.com/groups/339218557733680/permalink/345763087079227/
+   https://www.facebook.com/groups/339218557733680/permalink/345763773745825/
+   [ ] done -->
 
 We will create a 'Summary of findings' table using the following outcomes:
 
