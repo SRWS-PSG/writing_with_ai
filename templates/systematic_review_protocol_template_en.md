@@ -38,6 +38,7 @@ All authors contributed to the development of the selection criteria, the risk o
    https://www.facebook.com/groups/339218557733680/permalink/345765403745662/
    - 分かっていること
    - 分かっていないこと (PIOのどれが新しい？先行研究の不一致？)
+   - 背景は原則として2段落だけにする
    [ ] done -->
 
 ## 2. Research question

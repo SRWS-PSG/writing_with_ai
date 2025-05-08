@@ -266,7 +266,38 @@ steps:
   section: "## 1. Introduction"
   criteria: |
   Provides background on the topic, explains the rationale for the review, and justifies its necessity by identifying gaps or uncertainties in existing evidence, thereby relating to the importance for review users (related to C1, C2);
-  May cite prior relevant studies or reviews.
+  Must cite prior relevant studies or reviews.
+
+  The introduction should also explicitly position the systematic review in relation to existing literature using one of the following justification categories:
+
+  1. Update of prior SR:
+
+  - Definition: The review explicitly mentions updating a prior systematic review on the same research question but with a newer search date.
+  - Example: "We aimed to update the information provided by our previous report (Author et al.)"
+  - Key indicators: Mentions previous SR with same question, emphasizes new time period covered.
+
+  2. New in scope than prior SR:
+
+  - Definition: The review references prior systematic reviews on similar research questions but explains how this review differs in scope (e.g., different population, intervention, or outcomes).
+  - Example: "Previous reviews have mainly reported results for \[outcome X] rather than \[outcome Y] and omitted the growing body of evidence from observational studies on this topic, which often include larger study populations in real-world settings and longer follow-up." - Key indicators: Explicitly compares scope with previous reviews, highlights differences in PICO elements.
+
+  3. Higher quality than prior SR:
+
+  - Definition: The review references prior systematic reviews on similar questions but identifies methodological problems or limitations in previous reviews, or introduces advanced methods like network meta-analysis.
+  - Example: "This method allows comparison of all available medications against placebo and between pharmacological agents despite the paucity of head-to-head comparisons of therapies in RCTs."
+  - Key indicators: Critiques methods of prior reviews, proposes methodological improvements.
+
+  4. Completely new SR:
+
+  - Definition: The review explicitly states it is the first systematic review on this topic or research question.
+  - Example: "To date, to our knowledge, no studies have comprehensively examined \[topic X]" or "No clinical practice guidelines include \[intervention X]. This systematic review focuses on this gap."
+  - Key indicators: Explicitly claims to be first SR, identifies absence of previous synthesis.
+
+  5. Limitations of primary studies only:
+
+  - Definition: The review does not mention prior systematic reviews but discusses limitations of primary studies that necessitate a systematic review.
+  - Example: "Previous studies have largely been single centre trials with a small sample size, not powered to assess the true effect of \[intervention] and whether it interacts with important clinical subgroups."
+  - Key indicators: Discusses weaknesses of individual studies without referencing previous synthesis efforts.
 
   重要：
 
