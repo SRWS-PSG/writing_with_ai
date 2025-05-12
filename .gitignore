@@ -1,0 +1,4 @@
+# individual_documentsフォルダは追跡するが、その中のファイルは追跡しない
+individual_documents/*
+# .gitkeepファイルは例外として追跡することでフォルダ構造を維持
+!individual_documents/.gitkeep
