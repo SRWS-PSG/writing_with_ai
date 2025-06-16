@@ -8,7 +8,7 @@
     }
   },
 
-  "remoteUser": "vscode",
+  "remoteUser": "codespace",
 
   "customizations": {
     "vscode": {
