@@ -2,6 +2,31 @@
 医療者向け「AI × Markdown × GitHub」で英語論文を書くスターターキット
 このリポジトリは、英語論文を書くことが苦手な医療者が、AI ツール（GitHub Copilot や Claude）とテンプレートを活用して、効率的に臨床医学論文を執筆できるようにすることを目的としています。
 
+## SRWS-PSG ハンズオンカフェ: Writing with AI
+
+2026-05-13 のハンズオンでは、`demo/` フォルダを最小の文章作成プロジェクトとして使います。
+
+当日の主経路:
+
+1. このリポジトリを VS Code / Antigravity などの IDE で開く
+2. `install_pandoc.md` を見ながら pandoc を入れ、`pandoc --version` を確認する
+3. `demo/draft.md` を開く
+4. `prompts/writing_prompts.md` のプロンプトを使って、AIに一部ずつ修正を依頼する
+5. `demo/refs.bib` にある文献だけを使って引用を入れる
+6. pandoc で `demo/output/draft.docx` を生成する
+
+プロジェクトルートから実行する場合:
+
+```powershell
+pandoc demo/draft.md --citeproc --bibliography demo/refs.bib --csl demo/styles/american-medical-association.csl -o demo/output/draft.docx
+```
+
+PowerShell スクリプトを使う場合:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File demo/render_docx.ps1
+```
+
 ## :beginner: Quick Start – まず 10 分で書き始める
 
 > **対象:**  
@@ -100,6 +125,10 @@ Git を入れられない場合は次のボタンから GitHub Codespaces を起
 
 ```
 writing_with_ai/
+├── demo/                # 2026-05-13 ハンズオン用の最小プロジェクト
+├── prompts/             # ハンズオンで使うAIプロンプト集
+├── skills/              # 文体調整デモ用のローカルSkill
+├── install_pandoc.md    # ハンズオン冒頭で使うpandoc導入メモ
 ├── docs/                # 読むだけで理解できる学習ガイド
 │   ├── 01_overview.md   # サイトマップ & 学習ルート
 │   ├── 02_markdown.md   # Markdown 超入門
