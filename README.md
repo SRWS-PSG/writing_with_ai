@@ -93,6 +93,7 @@ Git を入れられない場合は次のボタンから GitHub Codespaces を起
 - [docs/02_markdown.md](docs/02_markdown.md) – 医学論文向け Markdown の書き方
 - [docs/03_ai_workflow.md](docs/03_ai_workflow.md) – Copilot・Cline を使った AI 改稿フロー
 - [docs/04_git_gov.md](docs/04_git_gov.md) – 共同執筆のための Git 運用とガバナンス
+- [tutorials/gdoc_review_roundtrip.md](tutorials/gdoc_review_roundtrip.md) – Google Docs のコメントに返信しつつ、修正を「提案」として渡す
 
 > 質問や不具合は Issues へどうぞ。Happy writing!
 
