@@ -29,7 +29,18 @@ git show <そのときのコミット>:paper.md > paper_v1.md
 
 ## 2. コメントを JSON で取得する
 
-Drive API の `comments.list` の結果をそのまま使います。
+いちばん簡単なのは、Google ドキュメントを「ファイル → ダウンロード → Microsoft Word (.docx)」で書き出し、
+そこからコメントを取り出す方法です。コメントの位置・返信スレッド・解決済みかどうかもすべて取れます。
+
+```bash
+python3 scripts/gdoc_comments_from_docx.py exported.docx -o comments.json
+```
+
+Claude Code にはこの手順が skill（`.claude/skills/gdoc-review-roundtrip`）として入っているので、
+「この Google Doc のコメントに返信して、修正を提案モードで渡して」と頼めば、書き出しからアップロードまで進めてくれます
+（Google Drive コネクタが必要です）。
+
+Drive API を直接使う場合は、`comments.list` の結果をそのまま使えます。
 
 ```bash
 FILE_ID=<Google ドキュメントの URL の /d/ と /edit の間の文字列>
