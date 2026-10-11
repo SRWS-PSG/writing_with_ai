@@ -72,6 +72,9 @@ VS CodeとMarkdownを使って論文を執筆する際に、BibTeXファイル�
    - 自分がローカルで論文プロジェクトフォルダに「references.bib」として保存
    - これにより、Zoteroのコレクションを更新すると自動的に.bibファイルも更新されます
 
+> 補足: 投稿先ジャーナルの引用スタイル（CSLファイル）は、`zotero_csl` Skill（[`../skills/zotero_csl/SKILL.md`](../skills/zotero_csl/SKILL.md)）でZotero Style Repositoryから取得できます。
+> この Skill は書式だけを扱い、`.bib` ファイルには触れません。
+
 #### Mendeleyからのエクスポート
 
 1. **フォルダ単位でのエクスポート**:

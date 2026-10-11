@@ -1,0 +1,118 @@
+[
+  {
+    "title": "AMA Manual of Style 11th edition",
+    "titleShort": "American Medical Association (numeric/Vancouver/citation-sequence)",
+    "name": "american-medical-association",
+    "dependent": 0,
+    "categories": {
+      "format": "numeric",
+      "fields": [
+        "medicine"
+      ]
+    },
+    "updated": "2026-02-09 21:55:12",
+    "href": "https://www.zotero.org/styles/american-medical-association"
+  },
+  {
+    "title": "AMA Manual of Style 11th edition (brackets)",
+    "titleShort": "American Medical Association (numeric/Vancouver/citation-sequence, brackets)",
+    "name": "american-medical-association-brackets",
+    "dependent": 0,
+    "categories": {
+      "format": "numeric",
+      "fields": [
+        "medicine"
+      ]
+    },
+    "updated": "2026-02-09 21:55:12",
+    "href": "https://www.zotero.org/styles/american-medical-association-brackets"
+  },
+  {
+    "title": "BMJ",
+    "name": "bmj",
+    "dependent": 0,
+    "categories": {
+      "format": "numeric",
+      "fields": [
+        "medicine"
+      ]
+    },
+    "updated": "2024-06-06 18:15:37",
+    "href": "https://www.zotero.org/styles/bmj"
+  },
+  {
+    "title": "BMJ Open",
+    "name": "bmj-open",
+    "dependent": 1,
+    "categories": {
+      "format": "numeric",
+      "fields": [
+        "medicine"
+      ]
+    },
+    "updated": "2014-05-10 04:01:46",
+    "href": "https://www.zotero.org/styles/bmj-open"
+  },
+  {
+    "title": "Elsevier - NLM/Vancouver (citation-sequence)",
+    "titleShort": "Elsevier - Vancouver",
+    "name": "elsevier-vancouver",
+    "dependent": 0,
+    "categories": {
+      "format": "numeric",
+      "fields": []
+    },
+    "updated": "2026-01-25 22:16:24",
+    "href": "https://www.zotero.org/styles/elsevier-vancouver"
+  },
+  {
+    "title": "Journal of Clinical Epidemiology",
+    "name": "journal-of-clinical-epidemiology",
+    "dependent": 1,
+    "categories": {
+      "format": "numeric",
+      "fields": []
+    },
+    "updated": "2018-03-09 05:06:46",
+    "href": "https://www.zotero.org/styles/journal-of-clinical-epidemiology"
+  },
+  {
+    "title": "Respirology",
+    "name": "respirology",
+    "dependent": 0,
+    "categories": {
+      "format": "numeric",
+      "fields": [
+        "medicine"
+      ]
+    },
+    "updated": "2024-10-16 15:04:15",
+    "href": "https://www.zotero.org/styles/respirology"
+  },
+  {
+    "title": "The Lancet",
+    "name": "the-lancet",
+    "dependent": 0,
+    "categories": {
+      "format": "numeric",
+      "fields": [
+        "medicine"
+      ]
+    },
+    "updated": "2014-08-28 00:49:57",
+    "href": "https://www.zotero.org/styles/the-lancet"
+  },
+  {
+    "title": "World Journal of Respirology",
+    "name": "world-journal-of-respirology",
+    "dependent": 1,
+    "categories": {
+      "format": "numeric",
+      "fields": [
+        "medicine"
+      ]
+    },
+    "updated": "2021-02-09 04:25:16",
+    "href": "https://www.zotero.org/styles/world-journal-of-respirology"
+  }
+]

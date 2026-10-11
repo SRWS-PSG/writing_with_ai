@@ -1,6 +1,6 @@
-# Writing with AI — 参加者用リポジトリ
+# Writing with AI — AIと一緒に論文を書くための道具箱
 
-SRWS-PSG ハンズオンカフェ「Writing with AI」(2026-05-13 17:30-18:30) で使う最小ファイル一式。
+AIアシスタントと一緒に論文原稿を書くための SRWS-PSG の道具箱 (Skill、demo、テンプレート)。ハンズオンカフェ「Writing with AI」(2026-05-13) で最初に使った。
 
 ## このリポジトリの位置づけ
 
@@ -16,7 +16,7 @@ SRWS-PSG ハンズオンカフェ「Writing with AI」(2026-05-13 17:30-18:30) �
 1. このリポジトリを `git clone` または ZIP ダウンロードでローカルに置く
 
    ```powershell
-   git clone https://github.com/youkiti/writing_with_AI.git
+   git clone https://github.com/SRWS-PSG/writing_with_ai.git
    ```
 
 2. IDE (Antigravity / VS Code 等) でフォルダごと開く
@@ -35,7 +35,7 @@ SRWS-PSG ハンズオンカフェ「Writing with AI」(2026-05-13 17:30-18:30) �
 3. `demo/protocol.md` + `demo/analysis.R` を `@` で読ませて、`draft.md` の Methods のたたき台を AI に書かせる
 4. 生成した Methods を `protocol.md` / `analysis.R` と突き合わせて整合を確認する
 5. `demo/assets/figure1.png` を本文に埋め込む（draw.io でひな型を作るのもあり）
-6. 引用は Zotero / Paperpile から BibTeX を取り出して `refs.bib` に貼る（AI に citation を作らせない）
+6. 引用は Zotero / Paperpile から BibTeX を取り出して `refs.bib` に貼る（AI に citation を作らせない）。投稿先の引用スタイル (CSL) は下のプロンプト 8 で取ってくる
 7. pandoc で `demo/output/draft.docx` を作る（下の「pandoc コマンド」をコピペ）
 8. 生成した `draft.docx` を Google Docs にアップロード→共有
 
@@ -133,7 +133,15 @@ SKILL の方針で
 
 > このリポジトリの [skills/humanizer_academic/](skills/humanizer_academic/) が松井健太郎先生由来の文体 Skill。Antigravity 側で Skill が読み込まれていれば、上のように短く頼むだけで効く。
 
-### 8. pandoc で Markdown → Word（スライド p.41-42）
+### 8. 投稿先の引用スタイル (CSL) を Zotero から取ってくる
+
+```text
+@draft.md の引用を Journal of Clinical Epidemiology の形式にして
+```
+
+> Skill: [skills/zotero_csl/](skills/zotero_csl/)
+
+### 9. pandoc で Markdown → Word（スライド p.41-42）
 
 AIに作らせる場合（スライドの例）:
 
@@ -156,7 +164,7 @@ pandoc draft.md --citeproc --bibliography refs.bib --csl styles/american-medical
 powershell -ExecutionPolicy Bypass -File demo/render_docx.ps1
 ```
 
-### 9. Markdown を Google Document にアップロード（スライド p.43）
+### 10. Markdown を Google Document にアップロード（スライド p.43）
 
 ```text
 @draft.mdをレンダリングして、Google documentにアップロード
@@ -164,7 +172,7 @@ powershell -ExecutionPolicy Bypass -File demo/render_docx.ps1
 
 > Skill: [skills/render_and_upload/](skills/render_and_upload/)
 
-### 10. Google Docs の編集を Skill で取り込む（スライド p.43）
+### 11. Google Docs の編集を Skill で取り込む（スライド p.43）
 
 ```text
 `Google docのurl` をskillを使ってチェックしてもらえる？
@@ -172,7 +180,7 @@ powershell -ExecutionPolicy Bypass -File demo/render_docx.ps1
 
 > Skill: [skills/fetch_gdoc_changes/](skills/fetch_gdoc_changes/)
 
-### 11. 共著者コメントに対応した v2 を Google Docs に返す
+### 12. 共著者コメントに対応した v2 を Google Docs に返す
 
 ```text
 review/v1/report.md を読んで対応表 (response_table.md) を作って。
@@ -210,6 +218,9 @@ review/v1/report.md を読んで対応表 (response_table.md) を作って。
 │       └── draft.docx           # pandocで生成済みの完成見本
 ├── projects/                    # 実際の執筆プロジェクト置き場
 │   └── .gitkeep                 # projects/ 自体を残すための空ファイル
+├── templates/                   # 旧版から引き継いだ原稿・プロトコルの雛形と CSL
+├── tutorials/                   # 旧版から引き継いだ入門ドキュメント
+├── resources/                   # 旧版から引き継いだプロンプト・STROBE・AI ツール資料
 └── skills/                          # AI アシスタント用 Skill 群 (使い分けは CLAUDE.md 参照)
     ├── case_report_workflow/        # 症例報告のエンドツーエンド・オーケストレータ (+ style_discipline.md = 英文スタイル正本)
     ├── letter_to_editor/            # Letter to the Editor オーケストレータ (日本語メモ → 英文レター)
@@ -222,13 +233,26 @@ review/v1/report.md を読んで対応表 (response_table.md) を作って。
     ├── peer_review_simulator/       # 症例報告の査読シミュレーション (非 CARE)
     ├── letter_review_simulator/     # レターの査読シミュレーション
     ├── submission_guidelines_check/ # 投稿規定の抽出・照合
-    ├── humanizer_academic/          # AI 文体の除去 (スライド §7)
-    ├── render_and_upload/           # Markdown → docx → Google Docs (スライド §9)
-    ├── fetch_gdoc_changes/          # Google Docs の suggestion / コメント取り込み (スライド §10)
-    └── tracked_revision/            # コメント対応表 → 修正 → 変更履歴+返答入り v2 (§11)
+    ├── argument_logic_review/       # 段落・論理構造の診断と、構造だけを直した新規ファイルの出力
+    ├── sentence_rhythm_review/      # 文の長さの分布を測り、リズムの外れ値と分割候補を示す
+    ├── zotero_csl/                  # 投稿先の引用スタイル (CSL) を Zotero から取得して pandoc に渡す (プロンプト集 8)
+    ├── humanizer_academic/          # AI 文体の除去 (プロンプト集 7)
+    ├── render_and_upload/           # Markdown → docx → Google Docs (プロンプト集 10)
+    ├── fetch_gdoc_changes/          # Google Docs の suggestion / コメント取り込み (プロンプト集 11)
+    └── tracked_revision/            # コメント対応表 → 修正 → 変更履歴+返答入り v2 (プロンプト集 12)
 ```
 
 各 Skill の詳細は `skills/<name>/SKILL.md` を参照。多くの Skill は `tests/` に回帰用フィクスチャを持つ。症例報告をゼロから書くときは `case_report_workflow`、既発表論文への批評レターは `letter_to_editor` が起点 (CLAUDE.md 参照)。
+
+## 旧版から引き継いだ資料
+
+このリポジトリには、旧版から残した次のフォルダがある。
+
+- `templates/`: IMRaD・結果先行 (results-first) の原稿テンプレート、SR プロトコルのテンプレート (日本語・英語)、観察研究プロトコルのテンプレート、Vancouver 系などの CSL
+- `tutorials/`: 環境構築、Git の基礎、Markdown、文献管理 (引用管理) などの入門ドキュメント
+- `resources/`: プロンプト集、STROBE、AI ツールの資料
+
+これらは 2025 年版のときに書かれたもので、今のリポジトリにない物を指している箇所があるかもしれない。2025 年版の全体は git タグ `v1-2025` ([https://github.com/SRWS-PSG/writing_with_ai/tree/v1-2025](https://github.com/SRWS-PSG/writing_with_ai/tree/v1-2025)) にある。
 
 ## 実際の原稿を書く場所
 
