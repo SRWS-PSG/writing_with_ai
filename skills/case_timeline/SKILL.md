@@ -185,8 +185,8 @@ gantt
     tickInterval 1day
     todayMarker off
     section <Phase>
-    Day <a>–<b>: <Event>           :a1, <start day × 86400>, <duration days>d
-    Day <b>–<c>: <Event after a1>  :a2, after a1, <duration days>d
+    Day <a> to <b> <Event>           :a1, <start day × 86400>, <duration days>d
+    Day <b> to <c> <Event after a1>  :a2, after a1, <duration days>d
 ```
 
 `dateFormat X` reads a start value as Unix **seconds**, while a duration such
@@ -196,7 +196,10 @@ Day 3 three seconds apart and the bars overlap. Mermaid has no axis format for
 "days since Day 0" (`%s` prints seconds, `%j` prints a 1-based day of the year
 and breaks on negative days), so print a neutral tick (`axisFormat ·`) with one
 tick per day, turn the today marker off, and put the relative days in each
-task label (`Day 0–3: ...`). Checked by rendering with Mermaid 11.4.1. This
+task label (`Day 0 to 3 IV antibiotics`). Do not put a colon inside a label:
+Mermaid reads the first `:` on a task line as the separator before the task
+data, so `Day 0–3: Antibiotics :a1, ...` loses the event name and breaks
+`after a1`. Checked by rendering with Mermaid 11.4.1. This
 keeps the diagram in relative time. If the author insists on calendar
 dates, switch to `dateFormat YYYY-MM-DD` **and** add a one-line warning in
 your reply about re-identifying the patient.
