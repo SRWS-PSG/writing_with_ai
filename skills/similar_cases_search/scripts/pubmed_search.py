@@ -147,13 +147,18 @@ def parse_articles(xml_data, highlight):
             last = author.find("LastName")
             fore = author.find("ForeName")
             initials = author.find("Initials")
+            collective = _text(author.find("CollectiveName"))
             if last is not None and last.text:
-                name = last.text
+                name = _bibtex_escape(last.text)
                 if fore is not None and fore.text:
-                    name += ", " + fore.text
+                    name += ", " + _bibtex_escape(fore.text)
                 elif initials is not None and initials.text:
-                    name += ", " + initials.text
+                    name += ", " + _bibtex_escape(initials.text)
                 authors.append(name)
+            elif collective:
+                # Inner braces make BibTeX treat a group name as one literal
+                # name instead of splitting it into "First Last" parts.
+                authors.append("{" + _bibtex_escape(collective) + "}")
         author_str = " and ".join(authors) if authors else ""
 
         journal = _text(art.find(".//Journal/Title"))
@@ -206,13 +211,44 @@ def efetch(pmids, email, api_key, highlight):
     return parse_articles(_get(url), highlight)
 
 
+_BIBTEX_ESCAPES = {
+    "\\": r"\textbackslash{}",
+    "%": r"\%",
+    "#": r"\#",
+    "$": r"\$",
+    "~": r"\textasciitilde{}",
+    "{": r"\{",
+    "}": r"\}",
+}
+
+
+def _bibtex_escape(text):
+    """Escape PubMed free text so it renders unchanged through BibTeX readers.
+
+    Verified with pandoc --citeproc: raw `%` truncates the value, `#` drops the
+    field, `$` opens math mode, `~` becomes a space, a backslash starts a
+    command and a stray brace breaks the file. `&`, `_` and `^` already render
+    literally, so they are left alone. Applied in one pass so the backslashes
+    introduced by the escapes themselves are never escaped again.
+    """
+    return "".join(_BIBTEX_ESCAPES.get(ch, ch) for ch in text)
+
+
 def _bibtex(pmid, title, author, journal, year, volume, issue, pages, doi):
+    """Emit one @article block.
+
+    `author` must already be BibTeX-ready (see parse_articles: each name is
+    escaped there, collective names are wrapped in braces). `title` and
+    `journal` are escaped here. year, volume, issue (number), pages, doi and
+    pmid are identifiers and are written as supplied: escaping would alter a
+    DOI such as 10.1002/(SICI)..._x%y, which pandoc reads back correctly raw.
+    """
     lines = [f"@article{{pmid{pmid},"]
-    lines.append(f"  title = {{{title}}},")
+    lines.append(f"  title = {{{_bibtex_escape(title)}}},")
     if author:
         lines.append(f"  author = {{{author}}},")
     if journal:
-        lines.append(f"  journal = {{{journal}}},")
+        lines.append(f"  journal = {{{_bibtex_escape(journal)}}},")
     if year:
         lines.append(f"  year = {{{year}}},")
     if volume:

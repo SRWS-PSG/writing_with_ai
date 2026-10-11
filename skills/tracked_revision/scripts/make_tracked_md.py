@@ -309,6 +309,19 @@ def wrap_block(block: dict, fn) -> str:
     return "\n".join(out)
 
 
+def attach_comment_marks(body: str, kind: str, starts: str, ends: str) -> str:
+    """ブロック全体を挟む形でコメントマークを付ける。段落以外は、先頭行の
+    行頭記号 (見出し・リスト・引用) の後ろに starts を置き、ends は最終行の
+    末尾に置く。マークを行頭に置くと pandoc が行頭記号を認識できなくなる。"""
+    if kind == "para":
+        return starts + body + ends
+    lines = body.split("\n")
+    first_prefix, first_rest = split_prefix(lines[0])
+    lines[0] = first_prefix + starts + first_rest
+    lines[-1] = lines[-1] + ends
+    return "\n".join(lines)
+
+
 def diff_block_pair(old: dict, new: dict, m: Marks, entries: list[dict], row_match: str = "label") -> str:
     kind = new["kind"]
     def fallback() -> str:
@@ -320,7 +333,8 @@ def diff_block_pair(old: dict, new: dict, m: Marks, entries: list[dict], row_mat
         if old["kind"] in ("code", "raw", "yaml"):
             DELETED_UNTRACKABLE.append(old["text"].split("\n")[0][:60])
             return starts + ends + wrap_block(new, m.ins)
-        return starts + wrap_block(old, m.dele) + ends + "\n\n" + wrap_block(new, m.ins)
+        deleted = attach_comment_marks(wrap_block(old, m.dele), old["kind"], starts, ends)
+        return deleted + "\n\n" + wrap_block(new, m.ins)
     if kind in ("code", "raw", "yaml"):
         # 差分表示できないブロック: 新版だけを出し、summary で知らせる
         UNTRACKABLE.append(new["text"].split("\n")[0][:60])
@@ -1060,14 +1074,7 @@ def main() -> int:
             starts = "".join(s for e in entries for s in e["starts"])
             ends = "".join(s for e in reversed(entries) for s in e["ends"])
             # ブロック全体を挟む形でコメントを付ける (削除ブロック内には入れない)
-            if b["kind"] in ("para",):
-                body = starts + body + ends
-            else:
-                first_prefix, first_rest = split_prefix(body.split("\n")[0])
-                lines = body.split("\n")
-                lines[0] = first_prefix + starts + first_rest
-                lines[-1] = lines[-1] + ends
-                body = "\n".join(lines)
+            body = attach_comment_marks(body, b["kind"], starts, ends)
         out_blocks.append(body)
 
     for tag, i1, i2, j1, j2 in sm.get_opcodes():

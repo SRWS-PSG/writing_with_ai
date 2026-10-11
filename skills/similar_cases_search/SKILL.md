@@ -219,7 +219,7 @@ Parse the XML (Python `xml.etree.ElementTree` is enough). Map each
 | BibTeX field | Source in PubMed XML |
 |---|---|
 | `title` | `MedlineCitation/Article/ArticleTitle` |
-| `author` | concat of `Author/LastName, FirstName` (or `Initials`), joined by ` and ` |
+| `author` | concat of `Author/LastName, FirstName` (or `Initials`), joined by ` and `; an `Author/CollectiveName` (group author) is kept in place as one braced literal name, e.g. `{RECOVERY Collaborative Group}` |
 | `journal` | `Journal/Title` (fall back to `Journal/ISOAbbreviation` if Title is absent) |
 | `year` | `Journal/JournalIssue/PubDate/Year` (fall back to `MedlineDate` first 4 digits) |
 | `volume` | `Journal/JournalIssue/Volume` |
