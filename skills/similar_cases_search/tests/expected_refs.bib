@@ -1,0 +1,29 @@
+% Expected BibTeX block produced from tests/fixture_efetch.xml by the
+% similar_cases_search skill. The block is what gets *appended* to refs.bib.
+%
+% Pass criteria (see SKILL.md "Testing this skill"):
+%   1. Exactly two @article entries.
+%   2. Citation keys are pmid<PMID>.
+%   3. Field order: title, author, journal, year, volume, number, pages, doi, pmid.
+%   4. For pmid99999002, doi and number/volume are OMITTED, not placeholders.
+
+@article{pmid99999001,
+  title = {Daptomycin-induced eosinophilic pneumonia: a case report},
+  author = {Yamada, Taro and Suzuki, Hanako and Tanaka, Ichiro},
+  journal = {BMJ Case Reports},
+  year = {2021},
+  volume = {14},
+  number = {3},
+  pages = {e240123},
+  doi = {10.1136/bcr-2020-240123},
+  pmid = {99999001}
+}
+
+@article{pmid99999002,
+  title = {A case of eosinophilic pneumonia after antibiotic therapy},
+  author = {Smith, John and Doe, Jane},
+  journal = {Chest},
+  year = {2019},
+  pages = {1122-1125},
+  pmid = {99999002}
+}

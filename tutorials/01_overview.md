@@ -18,28 +18,16 @@
 
 ```
 writing_with_ai/
-├── docs/                # 読むだけで理解できる学習ガイド
-│   ├── 00_overview.md   # サイトマップ & 学習ルート（このファイル）
-│   ├── 01_markdown.md   # Markdown 超入門
-│   ├── 02_ai_workflow.md # AIを活用した執筆ワークフロー
-│   ├── 03_git_gov.md    # ブランチ/PR 運用 & CODEOWNERS
-│   └── _assets/         # 画像・動画
-├── templates/           # そのままコピーして使う雛形
-│   ├── imrad_full.md    # IMRaD形式の論文テンプレート
-│   ├── results_first.md # 結果から投稿への道のりテンプレート
-│   └── letter_to_editor.md # 編集者への手紙テンプレート
-├── scripts/             # 補助スクリプト
-│   └── build.sh         # ビルドスクリプト
-├── .vscode/             # VS Code設定
-│   ├── tasks.json       # ビルド・リント・スペルチェックタスク
-│   └── copilot-chat.json # Copilotチャットスニペット
-├── .github/             # GitHub関連設定
-│   ├── workflows/       # CI/CDワークフロー
-│   └── PULL_REQUEST_TEMPLATE.md # PRテンプレート
-├── resources/           # 各種リソース
-│   ├── csl/             # 引用スタイル
-│   └── prompts/         # AIプロンプトライブラリ
-└── README.md            # はじめに + 最短10分で動かす手順
+├── demo/                # ハンズオン用の最小プロジェクト (draft.md, refs.bib, styles/ など)
+├── projects/            # 実際の原稿を置く場所 (Git 管理外)
+├── skills/              # AI アシスタント用の Skill 群
+├── templates/           # そのままコピーして使う雛形と CSL
+├── tutorials/           # 入門ドキュメント (このファイルを含む)
+├── resources/           # プロンプト集、STROBE、AI ツール資料
+├── README.md            # はじめに + コピペ用プロンプト集
+├── CLAUDE.md            # AI アシスタント向けの運用メモ
+├── env_check.md         # 環境チェック (AI に読ませて使う)
+└── rclone_advanced.md   # rclone の応用メモ
 ```
 
 ## 始め方

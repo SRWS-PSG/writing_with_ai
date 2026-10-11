@@ -1,0 +1,41 @@
+% Synthetic fixture for letter_to_editor self-test.
+% These entries stand in for the output of similar_cases_search
+% (background_literature mode) after author approval and citation_verify.
+% PMIDs and metadata are illustrative; verify with citation_verify before
+% relying on them in a real letter.
+%
+% The target article is added by hand (from the Step 2 ledger) so the pandoc
+% target-article key [@tanaka2024] resolves at render time. A just-published
+% target article may legitimately return not_found from citation_verify.
+
+@article{tanaka2024,
+  author  = {Tanaka, Hiroshi and Sato, Yuki and Suzuki, Ken},
+  title   = {Timing of corticosteroid therapy and in-hospital mortality in sepsis: a single-center retrospective cohort},
+  journal = {Journal of Critical Care Medicine},
+  year    = {2024},
+  volume  = {12},
+  number  = {3},
+  pages   = {145--153}
+}
+
+@article{pmid26978209,
+  author  = {Kyriacou, Demetrios N. and Lewis, Roger J.},
+  title   = {Confounding by Indication in Clinical Research},
+  journal = {JAMA},
+  year    = {2016},
+  volume  = {316},
+  number  = {17},
+  pages   = {1818--1819},
+  pmid    = {26978209}
+}
+
+@article{pmid25433444,
+  author  = {Lazarus, Clement and Haneef, Romana and Ravaud, Philippe and Boutron, Isabelle},
+  title   = {Classification and prevalence of spin in abstracts of non-randomized studies evaluating an intervention},
+  journal = {Journal of Clinical Epidemiology},
+  year    = {2015},
+  volume  = {68},
+  number  = {6},
+  pages   = {658--666},
+  pmid    = {25433444}
+}

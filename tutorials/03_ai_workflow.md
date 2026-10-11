@@ -10,7 +10,7 @@
 | -------------------------------- | -------------------------------------------------------------------------- |
 | □ VS Code (最新)                 | 日本語 UI でも OK。拡張機能 GitHub Copilot / Copilot Chat が入っているか？ |
 | □ Cline の設定                   | ブラウザで開け、resources/prompts/\*.prompt をコピペできる状態か？         |
-| □ 当リポジトリをローカルに clone | docs/ と resources/prompts/ が見えるか？                                   |
+| □ 当リポジトリをローカルに clone | tutorials/ と resources/prompts/ が見えるか？                                   |
 
 💡 **Tips**: Copilot Chat パネルは Ctrl + Shift + i（または Command⌘ + i）でトグル表示できます。キーバインドは個人設定で変えても OK。
 

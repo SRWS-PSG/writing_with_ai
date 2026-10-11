@@ -1,211 +1,278 @@
-# writing_with_ai
-医療者向け「AI × Markdown × GitHub」で英語論文を書くスターターキット
-このリポジトリは、英語論文を書くことが苦手な医療者が、AI ツール（GitHub Copilot や Claude）とテンプレートを活用して、効率的に臨床医学論文を執筆できるようにすることを目的としています。
+# Writing with AI — AIと一緒に論文を書くための道具箱
 
-## :beginner: Quick Start – まず 10 分で書き始める
+AIアシスタントと一緒に論文原稿を書くための SRWS-PSG の道具箱 (Skill、demo、テンプレート)。ハンズオンカフェ「Writing with AI」(2026-05-13) で最初に使った。
 
-> **対象:**  
-> _英語論文執筆に不慣れな臨床医_ が **Git 未経験でも** 最速でテンプレ → Word 出力まで完了させる手順です。  
-> VS Code + Dev Container を利用するため、Pandoc などの依存は自動で設定できます。
+## このリポジトリの位置づけ
 
----
+「文章作成も、コード作成と同じく **プロジェクトをIDEで開き、ファイルをAIに見せながら、小さく直して、レンダリングして確認する** 作業にできる」を体験するためのデモ素材。
 
-### 0. 環境セットアップ（所要 5 分）
+前提:
 
-Docker + DevContainer を使った簡単セットアップ方法：
+- 前提資料「もうコードは書かない！臨床疫学のためのVibe Coding完全ガイド」を実施済み
+- Antigravity をインストール済みで、AIチャットが動く
 
-1. [VS Code](https://code.visualstudio.com/) をインストール
-2. VS Code で「Dev Containers」拡張機能をインストール
-   - 拡張機能タブ（左側バー）→「Dev Containers」で検索 → インストール
-3. [Docker Desktop](https://www.docker.com/products/docker-desktop/) をインストール
-   - インストール後、起動しておく
-4. [GitHub アカウント](https://github.com/)の作成
-   - GitHub 公式サイトにアクセス
-   - 「Sign up」ボタンをクリック
-   - 指示に従ってメールアドレス、パスワード、ユーザー名を入力
-   - アカウント作成後、メール認証を完了
+## 当日やること
 
----
+1. このリポジトリを `git clone` または ZIP ダウンロードでローカルに置く
 
-### 1. レポジトリを取得（1 分）
+   ```powershell
+   git clone https://github.com/SRWS-PSG/writing_with_ai.git
+   ```
 
-> リポジトリ（Repository）とは、ファイルやフォルダの集まりで、その変更履歴も含めて保存される場所です。このリポジトリには論文テンプレートやツール、ドキュメントなどが格納されています。
+2. IDE (Antigravity / VS Code 等) でフォルダごと開く
+3. `env_check.md` を開き、AIチャットに次のように頼む
 
-1. VS Code を起動
-2. 左側のアクティビティバーから「ソース管理」アイコン（分岐アイコン）をクリック
-3. 「リポジトリのクローン」ボタンをクリック
-4. 「https://github.com/SRWS-PSG/writing_with_ai.git」などのリポジトリURLを入力
-5. クローン先のローカルフォルダを選択 (このときクラウドストレージと同期しているフォルダを使わないこと！)
-6. 一番左上のドキュメントアイコンをクリック
+   ```text
+   @env_check.md を読んで、私のPC環境を順に確認してください。
+   ```
 
-> これで、レポジトリを取得できました。クローンは、クラウド上のレポジトリを自分の PC にコピーすることを指します。
+   pandoc が未インストールなら、AIに案内された手順に沿って入れる（**pandoc 関連のコマンドだけ許可**。それ以外は拒否）。
 
-4. クローンしたフォルダを VS Code で開く
-5. 画面左下の「><」アイコンをクリック →「Reopen in Container」を選択
+## 当日の流れ
 
-これだけで完了！Pandoc など必要なツールが全て自動的にインストールされます。
+1. 練習では `demo/draft.md` をIDEで開く。実際の原稿を書くときは `projects/<project_name>/` の下に置く
+2. 下の「コピペ用プロンプト集」のプロンプトを見ながら、AIに部分修正を依頼する
+3. `demo/protocol.md` + `demo/analysis.R` を `@` で読ませて、`draft.md` の Methods のたたき台を AI に書かせる
+4. 生成した Methods を `protocol.md` / `analysis.R` と突き合わせて整合を確認する
+5. `demo/assets/figure1.png` を本文に埋め込む（draw.io でひな型を作るのもあり）
+6. 引用は Zotero / Paperpile から BibTeX を取り出して `refs.bib` に貼る（AI に citation を作らせない）。投稿先の引用スタイル (CSL) は下のプロンプト 8 で取ってくる
+7. pandoc で `demo/output/draft.docx` を作る（下の「pandoc コマンド」をコピペ）
+8. 生成した `draft.docx` を Google Docs にアップロード→共有
 
 ---
 
-### 2. テンプレートを確認（30 秒）
+## コピペ用プロンプト集
 
-1. VS Code のファイルエクスプローラーで [`templates` フォルダ](templates/)を開く
+> 参加者が当日コピペする内容はすべてここに集約しています。スライド (`20260513writing with ai.pdf`) のクリーム色ふきだしと同じ内容です。AIチャットにそのまま貼ってください。
 
-2. テンプレートファイル（例：[`imrad_full.md`](templates/imrad_full.md)または[`results_first_template.md`](templates/results_first_template.md)）をクリックして開く
+### 1. 環境確認（スライド p.8）
 
-   > 詳しい Git の使い方については [Git 基本ガイド](docs/00_git_basics.md) を参照してください
-
-3. 「ファイル」→「名前を付けて保存」で `paper.md` として保存
-   > テンプレートを上書きしないため
-
----
-
-### 3. Word ファイルを生成（30 秒）
-
-1. Markdown ファイル（paper.md）を開いた状態で Ctrl + Shift + B を押す
-2. ビルドタスク「build-docx」が自動的に実行される
-   （タスク一覧が表示された場合は「build-docx」を選択）
-
-3. 保存したファイルと同じフォルダに paper.docx が生成されれば成功！
-
----
-
-### 4. よくあるエラー & 対処
-
-- **ビルドエラー**: VS Code のターミナルでエラーメッセージを確認し、必要なパッケージをインストールしてください
-- **引用文献エラー**: Pandoc 3.x を使用している場合は、`--citeproc` オプションが必要です（VS Code のビルドタスクには既に含まれています）
-- **ファイルが見つからないエラー**: 参考文献ファイル（`.bib`）が Markdown ファイルと同じディレクトリにあることを確認してください
-
----
-
-### Codespaces / ブラウザだけで始める
-
-Git を入れられない場合は次のボタンから GitHub Codespaces を起動すれば、ブラウザだけで下記 1-4 章が実行できます。環境には必要なツール（Pandoc など）が自動的にインストールされます。
-
-[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/SRWS-PSG/writing_with_ai)
-
-> クリックすると、課金についての説明が出ます。デフォルトのマシンだと、[月60時間までは無料](https://docs.github.com/ja/get-started/learning-about-github/githubs-plans)で使えるので、試すだけなら問題ないです。
----
-
-### 次に読む
-
-- [docs/01_overview.md](docs/01_overview.md) – リポジトリ概要とガイド
-- [docs/02_markdown.md](docs/02_markdown.md) – 医学論文向け Markdown の書き方
-- [docs/03_ai_workflow.md](docs/03_ai_workflow.md) – Copilot・Cline を使った AI 改稿フロー
-- [docs/04_git_gov.md](docs/04_git_gov.md) – 共同執筆のための Git 運用とガバナンス
-
-> 質問や不具合は Issues へどうぞ。Happy writing!
-
-## 🗺️ リポジトリマップ
-
-```
-writing_with_ai/
-├── docs/                # 読むだけで理解できる学習ガイド
-│   ├── 01_overview.md   # サイトマップ & 学習ルート
-│   ├── 02_markdown.md   # Markdown 超入門
-│   ├── 03_ai_workflow.md # AIを活用した執筆ワークフロー
-│   ├── 04_git_gov.md    # ブランチ/PR 運用 & CODEOWNERS
-│   └── _assets/         # 画像・動画
-├── templates/           # そのままコピーして使う雛形
-│   ├── imrad_full.md    # IMRaD形式の論文テンプレート
-│   ├── results_first_template.md # 結果から投稿への道のりテンプレート
-│   └── letter_to_editor.md # 編集者への手紙テンプレート
-├── scripts/             # 補助スクリプト
-│   └── build.sh         # ビルドスクリプト
-├── .vscode/             # VS Code設定
-│   ├── tasks.json       # ビルド・リント・スペルチェックタスク
-│   └── copilot-chat.json # Copilotチャットスニペット
-├── .github/             # GitHub関連設定
-│   ├── workflows/       # CI/CDワークフロー
-│   └── PULL_REQUEST_TEMPLATE.md # PRテンプレート
-├── .devcontainer/       # Codespaces/Dev Container設定
-│   ├── devcontainer.json # 開発環境設定
-│   └── Dockerfile       # 環境構築設定
-├── resources/           # 各種リソース
-│   ├── csl/             # 引用スタイル
-│   └── prompts/         # AIプロンプトライブラリ
-└── README.md            # はじめに + 最短10分で動かす手順
+```text
+@env_check.md を読んで、私のPC環境を順に確認してください。
 ```
 
-## 🤖 AI ワークフロー チートシート
+### 2. `@` でファイルを指定して部分修正（スライド p.21）
 
-「結果から投稿への道のり」アプローチに基づいた執筆ワークフロー：
+基本形:
 
-```mermaid
-graph LR
-  A[結果の整理] -->|ボトムラインメッセージ| B(結果セクション)
-  B --> C(方法セクション)
-  C --> D(考察セクション)
-  D --> E(背景セクション)
-  E --> F(要旨)
-  F --> G[最終原稿]
-
-  style A fill:#f9f9f9,stroke:#333,stroke-width:1px
-  style B fill:#e1f5fe,stroke:#0288d1,stroke-width:1px
-  style C fill:#e8f5e9,stroke:#388e3c,stroke-width:1px
-  style D fill:#fff3e0,stroke:#f57c00,stroke-width:1px
-  style E fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px
-  style F fill:#e8eaf6,stroke:#3f51b5,stroke-width:1px
-  style G fill:#fce4ec,stroke:#e91e63,stroke-width:1px
+```text
+@draft.md を読んでください。
+Background セクションだけを対象に、以下の方針で修正してください。
+・内容は増やさない
+・300 words 以内
+・臨床疫学の研究計画書として自然な文体
+・修正案だけでなく、どこを変えたかも短く説明
 ```
 
-各ステップでの AI ツール活用ポイント：
+その他の言い方:
 
-- **結果の整理**: [section_outline.prompt](resources/prompts/section_outline.prompt)を使用
-- **結果セクション**: [stats2sentence.prompt](resources/prompts/stats2sentence.prompt)を使用
-- **文章洗練**: [refinement.prompt](resources/prompts/refinement.prompt)を使用
+```text
+@draft.md の Methods だけ、PECO が明確になるように直して
+```
 
-詳細は[AI を活用した執筆ワークフロー](docs/03_ai_workflow.md)を参照してください。
+```text
+@draft.md の Discussion だけ、言い過ぎを弱めて
+```
 
-## 🛠️ ビルド & チェック機能
+```text
+@draft.md 全体を読んで、論理の飛びだけ指摘して。本文は書き換えないで
+```
 
-VS Code では以下のタスクが利用可能です：
+### 3. protocol + code から Methods を書く（スライド p.23）
 
-- **ビルド**: `Ctrl+Shift+B` - Markdown ファイルを docx に変換
-- **リント**:
-  1. `Ctrl+Shift+P`でコマンドパレットを開く
-  2. `Tasks: Run Task`と入力
-  3. `lint-md`を選択 - Markdown の文法チェック
-- **スペルチェック**:
-  1. `Ctrl+Shift+P`でコマンドパレットを開く
-  2. `Tasks: Run Task`と入力
-  3. `spell-check`を選択 - スペルチェック
+```text
+@protocol.md と @analysis.R を読んで、
+@draft.md の Methods セクションのたたき台を書いてください。
 
-複数のファイルを一括処理する場合は、VS Code のエクスプローラービューで各ファイルを開いて処理するか、サポートが必要な場合は[Git とガバナンス](docs/04_git_gov.md)を参照してください。
+構成:
+1. Study design and setting
+2. Participants (組み入れ・除外)
+3. Exposure and outcome definitions
+4. Statistical analysis (モデル、調整変数、欠測)
 
-## 🙋‍♂️ よくある質問
+ルール:
+・事実は protocol.md と analysis.R に書かれている内容に限定
+・書かれていない数値は [TODO: 確認] と明示し、勝手に補完しない
+・各段落2〜4文
+```
 
-### DevContainer が起動しません
+### 4. 生成された Methods を突き合わせる（スライド p.24）
 
-以下を確認してください：
+```text
+@protocol.md と @analysis.R を見て、
+@draft.md の Methods に protocol/code と食い違う記述や、
+根拠が見当たらない記述がないか指摘してください。
+```
 
-- Docker Desktop が起動しているか
-- VS Code の「Dev Containers」拡張機能がインストールされているか
-- 十分なディスク容量があるか（最低 10GB 以上の空き容量を推奨）
+### 5. PRISMA フローチャートを draw.io で作らせる（スライド p.27）
 
-### 引用文献が正しく処理されません
+```text
+PRISMAフローチャートのひな型を draw.ioフォーマットで作って
+```
 
-以下を確認してください：
+### 6. draft.md に直接コメントで指示して「なおして」（スライド p.29）
 
-1. YAML フロントマターに`bibliography`と`csl`が正しく設定されているか
-2. 参考文献ファイル（`.bib`）が Markdown ファイルと同じディレクトリにあるか
+`draft.md` の図を入れたい位置に、こんなコメントを書く:
 
-VS Code では、`Ctrl+Shift+B`を押すことで自動的に`--citeproc`オプション付きでビルドが実行されます。
+```text
+# ここに demo\assets\study_flow.drawio からpngにして追加して
+```
 
-### DevContainer の利点は？
+そのうえで Chat に短く:
 
-- **環境構築が簡単**：Pandoc、LaTeX、各種ツールが自動インストール
-- **環境の一貫性**：全員が同じ環境で作業できるため「動かない」問題が発生しにくい
-- **VS Code 拡張の自動設定**：Markdown 編集に便利な拡張機能が自動的にインストール
-- **複数 OS 対応**：Windows、Mac、Linux で同じ環境が利用可能
+```text
+なおして
+```
 
-### 論文なのでprivateレポジトリで編集したい
+### 7. Skill で文体をそろえる（スライド p.31）
 
-| 方法 | 手順の概要 | 備考| 
-| ---- | ---- |---- |
-| GitHub Importer で新規リポジトリとして取り込む | 1. https://github.com/new/import へアクセス2. フォーク元の URL を入力3. Privacy を Private に設定してインポート | インポートしたリポジトリは元リポジトリとの「フォーク関係」がなく、プルリクエストのやり取りは自動では行えません。| 
-| ローカルで clone → 新規プライベートリポジトリに push | 1. git clone でローカルに取得2. GitHub で空のプライベートリポジトリを作成3. git remote set-url origin <新リポジトリURL>4. git push -u origin main | 完全に独立したコピーになります。| 
+```text
+SKILL の方針で
+@draft.md の Discussion を書き直して
+```
 
-## 貢献について
+> このリポジトリの [skills/humanizer_academic/](skills/humanizer_academic/) が松井健太郎先生由来の文体 Skill。Antigravity 側で Skill が読み込まれていれば、上のように短く頼むだけで効く。
 
-このリポジトリへの貢献を歓迎します。改善案やバグ報告は、Issue を作成するか、Pull Request を送信してください。
+### 8. 投稿先の引用スタイル (CSL) を Zotero から取ってくる
+
+```text
+@draft.md の引用を Journal of Clinical Epidemiology の形式にして
+```
+
+> Skill: [skills/zotero_csl/](skills/zotero_csl/)
+
+### 9. pandoc で Markdown → Word（スライド p.41-42）
+
+AIに作らせる場合（スライドの例）:
+
+```text
+@projects¥chatgpt_diagnostic_study¥sample_draft¥draft_manuscript.md を @reference.bib @american-medical-association.csl を使ってdocxに pandocでレンダリング
+```
+
+> 要点は **テキストファイル + リファレンスファイル + citation スタイル + 出力形式 + pandoc** を渡すこと。コマンドを覚えてなくても、`ファイル名 + pandocでdocxにして` で OK。
+
+そのまま使う場合（ルートから実行）:
+
+```powershell
+cd demo
+pandoc draft.md --citeproc --bibliography refs.bib --csl styles/american-medical-association.csl -o output/draft.docx
+```
+
+スクリプト経由（ルートから実行）:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File demo/render_docx.ps1
+```
+
+### 10. Markdown を Google Document にアップロード（スライド p.43）
+
+```text
+@draft.mdをレンダリングして、Google documentにアップロード
+```
+
+> Skill: [skills/render_and_upload/](skills/render_and_upload/)
+
+### 11. Google Docs の編集を Skill で取り込む（スライド p.43）
+
+```text
+`Google docのurl` をskillを使ってチェックしてもらえる？
+```
+
+> Skill: [skills/fetch_gdoc_changes/](skills/fetch_gdoc_changes/)
+
+### 12. 共著者コメントに対応した v2 を Google Docs に返す
+
+```text
+review/v1/report.md を読んで対応表 (response_table.md) を作って。
+それに沿って draft.md を直して。
+できたら tracked_revision Skill で、変更履歴とコメント返答入りの v2 の docx を作って。
+```
+
+> Skill: [skills/tracked_revision/](skills/tracked_revision/)
+
+---
+
+## フォルダ構成
+
+```text
+.
+├── README.md                    # このファイル
+├── CLAUDE.md                    # AIアシスタント向けの運用メモ
+├── env_check.md                 # 環境チェック (AIに読ませて使う)
+├── demo/                        # ハンズオンの最小プロジェクト
+│   ├── README.md
+│   ├── draft.md                 # 本文 (Markdown)
+│   ├── protocol.md              # 研究計画書サンプル (Methods生成用)
+│   ├── analysis.R               # 解析コードサンプル (Methods生成用)
+│   ├── refs.bib                 # 引用に使ってよい文献リスト
+│   ├── render_docx.ps1          # pandoc 実行スクリプト
+│   ├── assets/                  # 図 (PNG, Mermaid, HTML, draw.io XML)
+│   │   ├── figure1.png
+│   │   ├── study_flow.mmd
+│   │   ├── study_flow.html
+│   │   ├── study_flow.drawio
+│   │   └── study_flow.png
+│   ├── styles/
+│   │   └── american-medical-association.csl  # 引用スタイル
+│   └── output/
+│       └── draft.docx           # pandocで生成済みの完成見本
+├── projects/                    # 実際の執筆プロジェクト置き場
+│   └── .gitkeep                 # projects/ 自体を残すための空ファイル
+├── templates/                   # 旧版から引き継いだ原稿・プロトコルの雛形と CSL
+├── tutorials/                   # 旧版から引き継いだ入門ドキュメント
+├── resources/                   # 旧版から引き継いだプロンプト・STROBE・AI ツール資料
+└── skills/                          # AI アシスタント用 Skill 群 (使い分けは CLAUDE.md 参照)
+    ├── case_report_workflow/        # 症例報告のエンドツーエンド・オーケストレータ (+ style_discipline.md = 英文スタイル正本)
+    ├── letter_to_editor/            # Letter to the Editor オーケストレータ (日本語メモ → 英文レター)
+    ├── similar_cases_search/        # PubMed 検索 → refs.bib 候補 (scripts/pubmed_search.py)
+    ├── citation_verify/             # refs.bib を citeguard で Crossref/PubMed 照合
+    ├── bottom_line_message/         # 松原メソッド「2つのわかったこと」抽出
+    ├── care_check/                  # CARE 2013 チェックリスト監査
+    ├── deidentify_check/            # 症例報告の個人情報チェック
+    ├── case_timeline/               # 経過の Mermaid timeline 図化
+    ├── peer_review_simulator/       # 症例報告の査読シミュレーション (非 CARE)
+    ├── letter_review_simulator/     # レターの査読シミュレーション
+    ├── submission_guidelines_check/ # 投稿規定の抽出・照合
+    ├── argument_logic_review/       # 段落・論理構造の診断と、構造だけを直した新規ファイルの出力
+    ├── sentence_rhythm_review/      # 文の長さの分布を測り、リズムの外れ値と分割候補を示す
+    ├── zotero_csl/                  # 投稿先の引用スタイル (CSL) を Zotero から取得して pandoc に渡す (プロンプト集 8)
+    ├── humanizer_academic/          # AI 文体の除去 (プロンプト集 7)
+    ├── render_and_upload/           # Markdown → docx → Google Docs (プロンプト集 10)
+    ├── fetch_gdoc_changes/          # Google Docs の suggestion / コメント取り込み (プロンプト集 11)
+    └── tracked_revision/            # コメント対応表 → 修正 → 変更履歴+返答入り v2 (プロンプト集 12)
+```
+
+各 Skill の詳細は `skills/<name>/SKILL.md` を参照。多くの Skill は `tests/` に回帰用フィクスチャを持つ。症例報告をゼロから書くときは `case_report_workflow`、既発表論文への批評レターは `letter_to_editor` が起点 (CLAUDE.md 参照)。
+
+## 旧版から引き継いだ資料
+
+このリポジトリには、旧版から残した次のフォルダがある。
+
+- `templates/`: IMRaD・結果先行 (results-first) の原稿テンプレート、SR プロトコルのテンプレート (日本語・英語)、観察研究プロトコルのテンプレート、Vancouver 系などの CSL
+- `tutorials/`: 環境構築、Git の基礎、Markdown、文献管理 (引用管理) などの入門ドキュメント
+- `resources/`: プロンプト集、STROBE、AI ツールの資料
+
+これらは 2025 年版のときに書かれたもので、今のリポジトリにない物を指している箇所があるかもしれない。2025 年版の全体は git タグ `v1-2025` ([https://github.com/SRWS-PSG/writing_with_ai/tree/v1-2025](https://github.com/SRWS-PSG/writing_with_ai/tree/v1-2025)) にある。
+
+## 実際の原稿を書く場所
+
+実際の論文原稿、症例報告、共同研究メモ、未公開データは `projects/<project_name>/` の下に置く。
+
+`projects/*` は `.gitignore` によりデフォルトで Git 管理外。個人情報や未公開データを誤って GitHub に push しないため、教材として共有するファイルは `demo/`、実案件の作業ファイルは `projects/` に分ける。
+
+どうしても `projects/` 配下のファイルを共有リポジトリに入れる場合は、内容を確認したうえで `.gitignore` に明示的な例外を追加する。
+
+## ボトムライン
+
+- **Markdown が真実のソース**、`docx` はビルド成果物。Word 保存ではなく `pandoc` で都度生成する
+- **AIには `refs.bib` の中の文献だけを使わせる**。hallu-citation を防ぐ
+- **`@` でファイル指定して部分修正**。本文全体を一度に書き換えさせない
+- **Methods は `protocol.md` + `analysis.R` から「翻訳」できる**。AI の活躍場面
+- **実際の原稿は `projects/` 配下に置く**。配下はデフォルトで Git 管理外
+- **レビューを受けたら「変更履歴 + 元コメントへの返答 + 対応表」で返す**。修正版だけ送り返すと、どこをどう直したか共著者に伝わらない
+
+## 関連
+
+- 前提WS: もうコードは書かない！臨床疫学のための Vibe Coding 完全ガイド
+- 公式ドキュメント: [pandoc](https://pandoc.org/), [Mermaid](https://mermaid.js.org/), [draw.io](https://www.drawio.com/)
+- 引用スタイル: [Citation Style Language (CSL)](https://citationstyles.org/)

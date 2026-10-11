@@ -1,0 +1,32 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Writing with AI workflow">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="draft" value="Draft&#xa;Markdown" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1d4ed8;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="citations" value="Citations&#xa;refs.bib" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1d4ed8;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="340" y="180" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="figures" value="Figures&#xa;PNG / Mermaid" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1d4ed8;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="600" y="180" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="output" value="Output&#xa;docx" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#15803d;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="860" y="180" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="draft" target="citations">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="citations" target="figures">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="figures" target="output">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
