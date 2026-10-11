@@ -1,0 +1,8 @@
+flowchart LR
+  A[Research idea] --> B[Markdown draft]
+  B --> C[AI-assisted revision]
+  C --> D{Evidence check}
+  D -->|refs.bib only| E[Pandoc rendering]
+  D -->|missing source| B
+  E --> F[docx for sharing]
+

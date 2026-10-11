@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Frozen PubMed efetch response used to regression-test the
+  similar_cases_search skill. Two PMIDs are seeded:
+
+  - 99999001: a fully-populated record. The expected BibTeX entry has every
+    optional field (volume, number, doi).
+  - 99999002: a sparse record. The expected BibTeX entry must OMIT doi and
+    number rather than insert a placeholder. This guards against the most
+    common failure mode (hallucinating missing metadata).
+
+  PMIDs in the 9999900x range are fictitious to avoid colliding with real
+  PubMed records during any accidental network call.
+-->
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">99999001</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Electronic">1757-790X</ISSN>
+          <JournalIssue CitedMedium="Internet">
+            <Volume>14</Volume>
+            <Issue>3</Issue>
+            <PubDate>
+              <Year>2021</Year>
+              <Month>Mar</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>BMJ Case Reports</Title>
+          <ISOAbbreviation>BMJ Case Rep</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Daptomycin-induced eosinophilic pneumonia: a case report</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>e240123</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Yamada</LastName>
+            <ForeName>Taro</ForeName>
+            <Initials>T</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Suzuki</LastName>
+            <ForeName>Hanako</ForeName>
+            <Initials>H</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Tanaka</LastName>
+            <ForeName>Ichiro</ForeName>
+            <Initials>I</Initials>
+          </Author>
+        </AuthorList>
+      </Article>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">99999001</ArticleId>
+        <ArticleId IdType="doi">10.1136/bcr-2020-240123</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">99999002</PMID>
+      <Article PubModel="Print">
+        <Journal>
+          <JournalIssue CitedMedium="Print">
+            <PubDate>
+              <Year>2019</Year>
+            </PubDate>
+          </JournalIssue>
+          <Title>Chest</Title>
+          <ISOAbbreviation>Chest</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>A case of eosinophilic pneumonia after antibiotic therapy</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>1122-1125</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Smith</LastName>
+            <ForeName>John</ForeName>
+            <Initials>J</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Doe</LastName>
+            <ForeName>Jane</ForeName>
+            <Initials>J</Initials>
+          </Author>
+        </AuthorList>
+      </Article>
+    </MedlineCitation>
+    <PubmedData>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">99999002</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

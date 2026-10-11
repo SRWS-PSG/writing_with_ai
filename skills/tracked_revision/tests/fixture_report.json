@@ -1,0 +1,40 @@
+{
+  "tracked_changes": [],
+  "comments": [
+    {
+      "id": "0",
+      "author": "Yuki Kataoka",
+      "date": "2026-09-12T02:55:46Z",
+      "text": "typo: should",
+      "anchor_text": "shoud"
+    },
+    {
+      "id": "1",
+      "author": "Yuki Kataoka",
+      "date": "2026-09-12T02:55:46Z",
+      "text": "Please cite evidence for this claim, or soften it.",
+      "anchor_text": "uncontrolled use may introduce fabricated citations"
+    },
+    {
+      "id": "2",
+      "author": "Yuki Kataoka",
+      "date": "2026-09-12T02:55:46Z",
+      "text": "Why one section at a time? Explain the rationale in one sentence.",
+      "anchor_text": "Ask the AI to revise one section at a time."
+    },
+    {
+      "id": "3",
+      "author": "Reviewer B",
+      "date": "2026-09-12T02:55:46Z",
+      "text": "Add a sentence on how disagreements between AI output and the protocol are resolved.",
+      "anchor_text": "The researcher remains responsible for the argument"
+    },
+    {
+      "id": "4",
+      "author": "Reviewer B",
+      "date": "2026-09-12T02:55:46Z",
+      "text": "Journals increasingly require the exact model version; keep this section.",
+      "anchor_text": "AI disclosure example"
+    }
+  ]
+}

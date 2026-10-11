@@ -1,0 +1,31 @@
+# pandoc 出力 (draft.docx は完成見本として残す)
+demo/output/*
+!demo/output/draft.docx
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 一時ファイル
+*.tmp
+*.bak
+~$*
+
+# ローカル作業メモ
+task_list.md
+
+# 実際の執筆プロジェクト
+# projects/ 配下は個人・共同研究の原稿やデータを置く場所なので、
+# デフォルトでは Git 管理しない。
+projects/*
+!projects/.gitkeep
+
+# Python / R 一時
+__pycache__/
+.Rhistory
+.RData
+.Rproj.user/
+
+*.pdf
