@@ -25,6 +25,7 @@ my-writing/                 # 親リポジトリ (private)。原稿はここに�
 
 - `env_check.md` を実施済みで、`git` と `pandoc` が入っている。
 - GitHub のアカウントを持っている。
+- 引用チェックのツール (citeguard) には **Python 3.11 以上**が要る。入っていなくても手順7までは進められる (手順8で確認する)。
 - 本リポジトリは参考として開いているだけ。新しいリポジトリは、**本リポジトリのフォルダの中ではなく、別のフォルダ**に作る。**クラウド同期フォルダ (OneDrive / Google Drive / Dropbox / iCloud) の中にも作らない** (同期と git が競合して壊れることがあるため)。
 
 ---
@@ -145,11 +146,19 @@ git push -u origin HEAD
 citeguard --version
 ```
 
-バージョンが出れば OK。見つからない場合は、参加者に「引用チェックのツール (citeguard) を入れてよいか」を**1回だけ**聞き、了承が得られたら次を実行する。
+バージョンが出れば OK で、手順9へ進む。見つからない場合は、まず Python を確認する (macOS で `python` が無ければ `python3` で試す)。
 
 ```text
-pip install citeguard
+python --version
 ```
+
+- **3.11 以上が出た場合**: 参加者に「引用チェックのツール (citeguard) を入れてよいか」を**1回だけ**聞き、了承が得られたら次を実行する (macOS で `python3` を使った場合は `python3 -m pip ...`)。
+
+  ```text
+  python -m pip install citeguard
+  ```
+
+- **Python が無い、または 3.11 より古い場合**: 下記「インストール手順」の Python のコマンドを**提示して**、citeguard は入れずに手順9へ進む。リポジトリ自体はここまでで完成している。結果サマリーには「citeguard: 未インストール (Python 3.11 以上が必要)」と書く。
 
 ### 9. 最終確認
 
@@ -179,9 +188,31 @@ citeguard:        <0.x.x | 未インストール → 参加者が見送り>
 2. **原稿は `projects/<名前>/` に書く。** `writing_with_ai/` の中には書かない。そこは公開リポジトリの写しで、道具を読む場所。
 3. **道具を新しくするとき**は、`git submodule update --remote writing_with_ai` を実行したあと、親リポジトリで `git add writing_with_ai` してコミットする。**別の PC に持っていくとき**は、`git clone --recurse-submodules <自分のリポジトリのURL>` を使う。
 
+### 12. 作ったリポジトリを開き直すよう伝える
+
+最後に、参加者に次を伝える。
+
+- IDE の「フォルダーを開く」で、いま作った `<親フォルダ>/<name>` を開き、**新しい AIチャットを始める**。このチャットは道具箱のフォルダを開いたままなので、ここで原稿を書き始めると、原稿が自分のリポジトリに入らない。
+- 開き直したあと、道具箱のファイルは `writing_with_ai/` の下に見える。プロンプトでは `@writing_with_ai/env_check.md` や `@writing_with_ai/demo/citation_check/refs.bib` のように指定する。
+- 原稿は `projects/<名前>/` を作ってその中に置く。
+
 ---
 
 ## インストール手順
+
+### Windows: Python (citeguard 用)
+
+```powershell
+winget install --id Python.Python.3.12
+```
+
+### macOS: Python (citeguard 用)
+
+```bash
+brew install python@3.12
+```
+
+インストール後は、下の GitHub CLI と同じ要領でシェルの PATH を再読込してから `python --version` で確認する。
 
 ### Windows: GitHub CLI
 
@@ -232,4 +263,4 @@ gh --version
 - **秘密情報や `.env` ファイルをリポジトリに入れない**
 - **手順2のブラウザでの承認は参加者の操作**: AI は代行できない
 - **どこかの手順が失敗したら、エラーの文面をそのまま報告して止まる**: 同じ効果を持つ別のコマンドに切り替えて続行しない
-- **このファイルに記載のないものをインストールするよう提案しない**: GitHub CLI と citeguard 以外は不要
+- **このファイルに記載のないものをインストールするよう提案しない**: GitHub CLI・Python・citeguard 以外は不要。Python は提示するだけで、AI が勝手に入れない

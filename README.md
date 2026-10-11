@@ -61,20 +61,22 @@ my-writing/                  # 自分の private リポジトリ (親)
    @setup.md を読んで、私用の執筆リポジトリを作ってください
    ```
 
-2. 投稿先の引用スタイルに合わせる: 上の「コピペ用プロンプト集」の [8. 投稿先の引用スタイル (CSL) を Zotero から取ってくる](#8-投稿先の引用スタイル-csl-を-zotero-から取ってくる) のプロンプトをそのまま使う。
-3. わざと誤りを入れた参考文献リストで引用チェックを体験する ([demo/citation_check/README.md](demo/citation_check/README.md))
+2. **作ったリポジトリを IDE で開き直す**: IDE の「フォルダーを開く」で、いま作った自分のリポジトリ (例: `my-writing`) のフォルダを開き、新しい AIチャットを始める。ここを飛ばすと、AI はこの道具箱のフォルダで作業を続け、原稿が履歴に残らない。以降のステップは、開き直した自分のリポジトリで行う。道具箱のファイルは `writing_with_ai/` の下に見える。
+
+3. 投稿先の引用スタイルに合わせる: 下の「コピペ用プロンプト集」の [8. 投稿先の引用スタイル (CSL) を Zotero から取ってくる](#8-投稿先の引用スタイル-csl-を-zotero-から取ってくる) のプロンプトを使う。`@draft.md` は自分の原稿 (`@projects/<名前>/draft.md`) に読み替える。
+4. わざと誤りを入れた参考文献リストで引用チェックを体験する ([demo/citation_check/README.md](demo/citation_check/README.md))
 
    ```text
-   @demo/citation_check/refs.bib の citation をチェックして
+   @writing_with_ai/demo/citation_check/refs.bib の citation をチェックして
    ```
 
-4. rclone で Google Drive につなぐ
+5. rclone で Google Drive につなぐ
 
    ```text
-   @env_check.md を読んで、rclone と Google Drive の接続を確認してください。
+   @writing_with_ai/env_check.md を読んで、rclone と Google Drive の接続を確認してください。
    ```
 
-5. docx にして Google ドキュメントに上げ、共著者のコメントを取り込む: 「コピペ用プロンプト集」の [10. Markdown を Google Document にアップロード](#10-markdown-を-google-document-にアップロードスライド-p43) と [11. Google Docs の編集を Skill で取り込む](#11-google-docs-の編集を-skill-で取り込むスライド-p43) を使う。Markdown は AI が読み書きしやすく、docx / Google ドキュメントは人が読みやすい。コメントと編集履歴は Google ドキュメント側に残す。
+6. docx にして Google ドキュメントに上げ、共著者のコメントを取り込む: 「コピペ用プロンプト集」の [10. Markdown を Google Document にアップロード](#10-markdown-を-google-document-にアップロードスライド-p43) と [11. Google Docs の編集を Skill で取り込む](#11-google-docs-の編集を-skill-で取り込むスライド-p43) を使う。Markdown は AI が読み書きしやすく、docx / Google ドキュメントは人が読みやすい。コメントと編集履歴は Google ドキュメント側に残す。
 
 最初に覚えておく3点 (詳しくは [setup.md](setup.md)):
 

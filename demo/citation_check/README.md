@@ -25,7 +25,13 @@ AIチャットに次のように頼む。
 @demo/citation_check/refs.bib の citation をチェックして
 ```
 
-コマンドで直接実行する場合は、ルートから次のように実行する (`<メールアドレス>` は自分のものに置き換える)。
+自分専用のリポジトリ (道具箱を `writing_with_ai/` に submodule として入れた構成) で試すときは、パスの先頭に `writing_with_ai/` を付ける。
+
+```text
+@writing_with_ai/demo/citation_check/refs.bib の citation をチェックして
+```
+
+コマンドで直接実行する場合は、道具箱のルートから次のように実行する (`<メールアドレス>` は自分のものに置き換える)。
 
 ```text
 citeguard --input-file demo/citation_check/refs.bib --out <レポートの出力先> --all --email <メールアドレス>
