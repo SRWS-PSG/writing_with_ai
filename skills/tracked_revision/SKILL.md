@@ -214,7 +214,12 @@ pandoc $p/output/v2/draft_v2_tracked.md --reference-doc demo/styles/reference.do
 ```
 
 `--reference-doc` / CSL のパスは `demo/render_docx.ps1` / `demo/README.md` に合わせる
-(体裁: 本文 Times New Roman・行間 1.5 倍、見出し黒ゴシック太字)。`--resource-path` を
+(体裁: 本文 Times New Roman・行間 1.5 倍、見出し黒ゴシック太字)。
+**`--csl` の AMA は、投稿先のスタイルを決めていないときの既定値**。`zotero_csl` Skill で
+投稿先の CSL を取得済み (`$p/styles/csl_source.json` がある) なら、その `use_csl` の
+ファイルを `--csl $p/styles/<use_csl>` として渡す (「0. アップロード手順」の pandoc も同じ)。
+コマンドラインの `--csl` は原稿の YAML の `csl:` より優先されるので、AMA のまま流すと
+v1 と v2 で文献欄の体裁が変わる。`--resource-path` を
 付けないと、`draft.md` と同じフォルダの画像が pandoc の実行ディレクトリ (リポジトリ
 ルート) から見つからず解決に失敗する。
 

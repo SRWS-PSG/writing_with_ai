@@ -40,6 +40,10 @@ description: Render a Markdown manuscript to Word (docx) with pandoc and upload 
      -o $p/output/<input>.docx
    ```
 
+   - `--csl` の AMA は、投稿先のスタイルを決めていないときの既定値。
+     `zotero_csl` Skill で投稿先の CSL を取得済み (`$p/styles/csl_source.json`
+     がある) なら、その `use_csl` のファイルを `--csl $p/styles/<use_csl>` として
+     渡す。コマンドラインの `--csl` は原稿の YAML の `csl:` より優先される。
    - 出力 docx は入力と同じプロジェクトフォルダ配下 (`$p/output/`) に置く。
      **実案件の成果物を `demo/output/` に置かない** (`demo/` は教材、
      `projects/` は実案件 — リポジトリの CLAUDE.md 参照)。
