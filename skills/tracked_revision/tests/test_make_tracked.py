@@ -1126,5 +1126,69 @@ class TestRowMatchLabelPairing(unittest.TestCase):
         self.assertEqual(out.count(".insertion"), 1)
 
 
+# ---------------------------------------------------------------- fallback keeps line markers
+class TestFallbackKeepsLineMarker(unittest.TestCase):
+    """差分が強調範囲をまたいで丸ごと置換にフォールバックするとき、コメント開始
+    マークは行頭記号 (見出し・リスト・引用) の後ろに置き、行頭記号は行頭に
+    残ること。"""
+
+    MARKS = MTM.Marks(DEFAULT_AUTHOR, DEFAULT_DATE)
+    ENTRIES = [{"c0": 2, "c1": 6, "starts": ["<S>"], "ends": ["<E>"]}]
+
+    def fallback(self, old_text: str, new_text: str) -> str:
+        return MTM.diff_block_pair(
+            MTM.classify(old_text), MTM.classify(new_text), self.MARKS, self.ENTRIES)
+
+    def test_list_item_marker_stays_at_line_start(self):
+        out = self.fallback("- A **very old** item", "- A **very new** item")
+        deleted = out.split("\n\n")[0]
+        self.assertTrue(deleted.startswith("- <S>[A **very old** item]{.deletion"), deleted)
+        self.assertTrue(deleted.endswith("<E>"), deleted)
+
+    def test_heading_marker_stays_at_line_start(self):
+        out = self.fallback("# A **very old** item", "# A **very new** item")
+        deleted = out.split("\n\n")[0]
+        self.assertTrue(deleted.startswith("# <S>[A **very old** item]{.deletion"), deleted)
+        self.assertTrue(deleted.endswith("<E>"), deleted)
+
+    def test_quote_marker_stays_at_line_start(self):
+        out = self.fallback("> A **very old** item", "> A **very new** item")
+        deleted = out.split("\n\n")[0]
+        self.assertTrue(deleted.startswith("> <S>[A **very old** item]{.deletion"), deleted)
+        self.assertTrue(deleted.endswith("<E>"), deleted)
+
+    def test_multi_line_list_ends_go_on_last_line(self):
+        out = self.fallback("- one\n- A **very old** item", "- one\n- A **very new** item")
+        deleted = out.split("\n\n")[0]
+        lines = deleted.split("\n")
+        self.assertTrue(lines[0].startswith("- <S>"), deleted)
+        self.assertTrue(lines[-1].startswith("- "), deleted)
+        self.assertTrue(lines[-1].endswith("<E>"), deleted)
+
+    def test_plain_paragraph_unchanged(self):
+        out = self.fallback("Intro **old text** end.", "Intro **new text** end.")
+        deleted = out.split("\n\n")[0]
+        self.assertTrue(deleted.startswith("<S>[Intro **old text** end.]{.deletion"), deleted)
+        self.assertTrue(deleted.endswith("<E>"), deleted)
+
+    @unittest.skipUnless(HAVE_PANDOC, "pandoc not found on PATH")
+    def test_commented_list_item_reject_restores_list(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp_path = Path(td)
+            old_text = "- A **very old** item\n"
+            new_text = "- A **very new** item\n"
+            report = {"comments": [
+                {"id": "1", "author": "R", "date": DEFAULT_DATE, "text": "check",
+                 "anchor_text": "item"},
+            ]}
+            proc = make_tracked(tmp_path, old_text, new_text, report=report)
+            self.assertEqual(proc.returncode, 0, proc.stderr)
+            out = (tmp_path / "tracked.md").read_text(encoding="utf-8")
+            self.assertTrue(out.lstrip().startswith("- "), out)
+            assert_round_trip(
+                self, tmp_path / "tracked.md", tmp_path / "old.md", tmp_path / "new.md",
+                tmp_path)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -57,8 +57,14 @@ def split_sentences(text):
     return out
 
 
+# A number with thousands separators and/or a decimal point is one word.
+_NUMBER = re.compile(r"(?<![\w.,])(?:\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+\.\d+)(?![\w])")
+
+
 def word_count(sentence):
-    cleaned = re.sub(r"[^\w\s'-]", " ", strip_markup(sentence))
+    text = _NUMBER.sub(lambda m: re.sub(r"[.,]", "", m.group(0)),
+                       strip_markup(sentence))
+    cleaned = re.sub(r"[^\w\s'-]", " ", text)
     return len([w for w in cleaned.split() if w.strip()])
 
 

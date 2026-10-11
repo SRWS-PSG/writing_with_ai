@@ -37,6 +37,7 @@ description: Render a Markdown manuscript to Word (docx) with pandoc and upload 
    $p = "projects/<name>"
    pandoc $p/<input>.md --reference-doc demo/styles/reference.docx `
      --citeproc --bibliography $p/refs.bib --csl demo/styles/american-medical-association.csl `
+     --resource-path $p `
      -o $p/output/<input>.docx
    ```
 
@@ -44,6 +45,9 @@ description: Render a Markdown manuscript to Word (docx) with pandoc and upload 
      `zotero_csl` Skill で投稿先の CSL を取得済み (`$p/styles/csl_source.json`
      がある) なら、その `use_csl` のファイルを `--csl $p/styles/<use_csl>` として
      渡す。コマンドラインの `--csl` は原稿の YAML の `csl:` より優先される。
+   - `--resource-path $p` を付けないと、原稿と同じフォルダの画像 (例: `assets/figure1.png`) が
+     pandoc の実行ディレクトリ (リポジトリルート) から見つからず、pandoc は終了コード 0 のまま
+     画像の代わりに代替テキストを書き出す。
    - 出力 docx は入力と同じプロジェクトフォルダ配下 (`$p/output/`) に置く。
      **実案件の成果物を `demo/output/` に置かない** (`demo/` は教材、
      `projects/` は実案件 — リポジトリの CLAUDE.md 参照)。
