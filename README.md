@@ -41,6 +41,51 @@ AIアシスタントと一緒に論文原稿を書くための SRWS-PSG の道�
 
 ---
 
+## 実践編: 自分専用の執筆リポジトリを作る
+
+ここまでの基本の流れでは `projects/` が Git の管理外なので、原稿に履歴もバックアップも残らない。そこで、自分専用の **private リポジトリ** (親) を作り、この道具箱を **submodule** として中に取り込む。こうすると原稿の履歴・バックアップ・共著者との共有が手に入り、道具は公開リポジトリから更新できる。
+
+```text
+my-writing/                  # 自分の private リポジトリ (親)
+├── projects/<name>/...      # 実際の原稿 (ここに書く)
+└── writing_with_ai/         # この道具箱 (submodule。読むだけ)
+    ├── skills/
+    └── demo/
+```
+
+流れ (各ステップのプロンプトをAIチャットに貼る):
+
+1. private リポジトリを作る
+
+   ```text
+   @setup.md を読んで、私用の執筆リポジトリを作ってください
+   ```
+
+2. **作ったリポジトリを IDE で開き直す**: IDE の「フォルダーを開く」で、いま作った自分のリポジトリ (例: `my-writing`) のフォルダを開き、新しい AIチャットを始める。ここを飛ばすと、AI はこの道具箱のフォルダで作業を続け、原稿が履歴に残らない。以降のステップは、開き直した自分のリポジトリで行う。道具箱のファイルは `writing_with_ai/` の下に見える。
+
+3. 投稿先の引用スタイルに合わせる: 下の「コピペ用プロンプト集」の [8. 投稿先の引用スタイル (CSL) を Zotero から取ってくる](#8-投稿先の引用スタイル-csl-を-zotero-から取ってくる) のプロンプトを使う。`@draft.md` は自分の原稿 (`@projects/<名前>/draft.md`) に読み替える。
+4. わざと誤りを入れた参考文献リストで引用チェックを体験する ([demo/citation_check/README.md](demo/citation_check/README.md))
+
+   ```text
+   @writing_with_ai/demo/citation_check/refs.bib の citation をチェックして
+   ```
+
+5. rclone で Google Drive につなぐ
+
+   ```text
+   @writing_with_ai/env_check.md を読んで、rclone と Google Drive の接続を確認してください。
+   ```
+
+6. docx にして Google ドキュメントに上げ、共著者のコメントを取り込む: 「コピペ用プロンプト集」の [10. Markdown を Google Document にアップロード](#10-markdown-を-google-document-にアップロードスライド-p43) と [11. Google Docs の編集を Skill で取り込む](#11-google-docs-の編集を-skill-で取り込むスライド-p43) を使う。Markdown は AI が読み書きしやすく、docx / Google ドキュメントは人が読みやすい。コメントと編集履歴は Google ドキュメント側に残す。
+
+最初に覚えておく3点 (詳しくは [setup.md](setup.md)):
+
+- private にしても、AI に見せた本文は AI の提供元に送られる。患者情報を含む原稿は所属施設の規程に従う。
+- 原稿は `projects/<名前>/` に書く。`writing_with_ai/` の中には書かない。
+- 道具の更新は `git submodule update --remote writing_with_ai` のあと親でコミット。別の PC では `git clone --recurse-submodules`。
+
+---
+
 ## コピペ用プロンプト集
 
 > 参加者が当日コピペする内容はすべてここに集約しています。スライド (`20260513writing with ai.pdf`) のクリーム色ふきだしと同じ内容です。AIチャットにそのまま貼ってください。
@@ -199,12 +244,14 @@ review/v1/report.md を読んで対応表 (response_table.md) を作って。
 ├── README.md                    # このファイル
 ├── CLAUDE.md                    # AIアシスタント向けの運用メモ
 ├── env_check.md                 # 環境チェック (AIに読ませて使う)
+├── setup.md                     # 自分専用の private 執筆リポジトリを作る (AIに読ませて使う)
 ├── demo/                        # ハンズオンの最小プロジェクト
 │   ├── README.md
 │   ├── draft.md                 # 本文 (Markdown)
 │   ├── protocol.md              # 研究計画書サンプル (Methods生成用)
 │   ├── analysis.R               # 解析コードサンプル (Methods生成用)
 │   ├── refs.bib                 # 引用に使ってよい文献リスト
+│   ├── citation_check/          # 引用チェックの練習 (わざと誤りを入れた refs.bib)
 │   ├── render_docx.ps1          # pandoc 実行スクリプト
 │   ├── assets/                  # 図 (PNG, Mermaid, HTML, draw.io XML)
 │   │   ├── figure1.png
@@ -219,6 +266,7 @@ review/v1/report.md を読んで対応表 (response_table.md) を作って。
 ├── projects/                    # 実際の執筆プロジェクト置き場
 │   └── .gitkeep                 # projects/ 自体を残すための空ファイル
 ├── templates/                   # 旧版から引き継いだ原稿・プロトコルの雛形と CSL
+│   └── private_repo/            # 自分専用リポジトリ (親) に置くひな形 (setup.md が使う)
 ├── tutorials/                   # 旧版から引き継いだ入門ドキュメント
 ├── resources/                   # 旧版から引き継いだプロンプト・STROBE・AI ツール資料
 └── skills/                          # AI アシスタント用 Skill 群 (使い分けは CLAUDE.md 参照)

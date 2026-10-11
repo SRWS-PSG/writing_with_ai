@@ -1,0 +1,22 @@
+# 親リポジトリ用の .gitignore (手順6で「.gitignore」に名前を変えてコピーする)
+#
+# 道具箱と違い、ここでは projects/ を Git で管理する。このリポジトリは private で、
+# 原稿の履歴とバックアップを残すのが目的のため。projects/ は無視しない。
+
+# OS・エディタの一時ファイル
+.DS_Store
+Thumbs.db
+~$*
+
+# Python
+__pycache__/
+
+# 一時ファイル
+*.tmp
+
+# 秘密情報
+.env
+.env.*
+
+# pandoc の出力物 (Markdown から作り直せる)
+projects/*/output/
