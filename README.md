@@ -300,7 +300,9 @@ review/v1/report.md を読んで対応表 (response_table.md) を作って。
 - `tutorials/`: 環境構築、Git の基礎、Markdown、文献管理 (引用管理) などの入門ドキュメント
 - `resources/`: プロンプト集、STROBE、AI ツールの資料
 
-これらは 2025 年版のときに書かれたもので、今のリポジトリにない物を指している箇所があるかもしれない。2025 年版の全体は git タグ `v1-2025` ([https://github.com/SRWS-PSG/writing_with_ai/tree/v1-2025](https://github.com/SRWS-PSG/writing_with_ai/tree/v1-2025)) にある。
+`resources/detectorscope.md` は 2026 年に足した資料で、AI 文章検出器 DetectorScope を手元の PC で動かし、英文の「AI らしく見える箇所」を `humanizer_academic` での見直しの手がかりにする手順を書いている (確率は使わない)。
+
+これ以外の資料は 2025 年版のときに書かれたもので、今のリポジトリにない物を指している箇所があるかもしれない。2025 年版の全体は git タグ `v1-2025` ([https://github.com/SRWS-PSG/writing_with_ai/tree/v1-2025](https://github.com/SRWS-PSG/writing_with_ai/tree/v1-2025)) にある。
 
 ## 実際の原稿を書く場所
 
